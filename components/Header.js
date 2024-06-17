@@ -11,8 +11,8 @@ const NavBar = () => {
   const links = [
     { id: 0, name: locale.NAV.INDEX, to: BLOG.path || '/', show: true },
     { id: 1, name: locale.NAV.ABOUT, to: '/about', show: BLOG.showAbout },
-    { id: 2, name: locale.NAV.RSS, to: '/feed', show: true, external: true },
-    { id: 3, name: locale.NAV.SEARCH, to: '/search', show: true }
+    { id: 2, name: locale.NAV.SEARCH, to: '/search', show: true },
+    // { id: 3, name: locale.NAV.RSS, to: '/feed', show: true, external: true }
   ]
   return (
     <div className="flex-shrink-0">
@@ -39,7 +39,7 @@ export default function Header ({ navBarTitle, fullWidth }) {
 
   // Favicon
 
-  const resolveFavicon = fallback => !fallback && dark ? '/favicon.dark.png' : '/favicon.png'
+  const resolveFavicon = fallback => !fallback && '/favicon.png'
   const [favicon, _setFavicon] = useState(resolveFavicon())
   const setFavicon = fallback => _setFavicon(resolveFavicon(fallback))
 

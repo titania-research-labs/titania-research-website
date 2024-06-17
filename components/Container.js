@@ -75,7 +75,7 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
         />
         <main className={cn(
           'flex-grow transition-all',
-          layout !== 'blog' && ['self-center px-4', fullWidth ? 'md:px-24' : 'w-full max-w-2xl']
+          layout !== 'blog' && ['self-center px-4', fullWidth ? 'md:px-24' : 'w-full max-w-4xl']
         )}>
           {children}
         </main>
