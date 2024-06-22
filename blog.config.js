@@ -3,7 +3,7 @@ const BLOG = {
   author: 'banri',
   email: 'banri.yanahama@gmail.com',
   link: 'https://banr1.vercel.app',
-  description: 'This gonna be an awesome website.',
+  description: "banri's personal website.",
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Tokyo', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'auto', // ['light', 'dark', 'auto'],
@@ -21,7 +21,7 @@ const BLOG = {
   socialLink: 'https://x.com/banr1_',
   seo: {
     keywords: ['Blog', 'Website', 'Notion', 'banri'],
-    googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
+    googleSiteVerification: '', // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
@@ -30,11 +30,11 @@ const BLOG = {
     ackeeConfig: {
       tracker: '', // e.g 'https://ackee.craigary.net/tracker.js'
       dataAckeeServer: '', // e.g https://ackee.craigary.net , don't end with a slash
-      domainId: '' // e.g '0e2257a8-54d4-4847-91a1-0311ea48cc7b'
+      domainId: '', // e.g '0e2257a8-54d4-4847-91a1-0311ea48cc7b'
     },
     gaConfig: {
-      measurementId: '' // e.g: G-XXXXXXXXXX
-    }
+      measurementId: '', // e.g: G-XXXXXXXXXX
+    },
   },
   comment: {
     // support provider: gitalk, utterances, cusdis
@@ -45,18 +45,19 @@ const BLOG = {
       admin: [],
       clientID: '',
       clientSecret: '',
-      distractionFreeMode: false
+      distractionFreeMode: false,
     },
     utterancesConfig: {
-      repo: ''
+      repo: '',
     },
     cusdisConfig: {
       appId: '', // data-app-id
       host: 'https://cusdis.com', // data-host, change this if you're using self-hosted version
-      scriptSrc: 'https://cusdis.com/js/cusdis.es.js' // change this if you're using self-hosted version
-    }
+      scriptSrc: 'https://cusdis.com/js/cusdis.es.js', // change this if you're using self-hosted version
+    },
   },
-  isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
-}
+  isProd: process.env.VERCEL_ENV === 'production', // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
+};
+
 // export default BLOG
-module.exports = BLOG
+module.exports = BLOG;

@@ -1,8 +1,8 @@
-import Script from 'next/script'
-import { useConfig } from '@/lib/config'
+import Script from 'next/script';
+import { useConfig } from '@/lib/config';
 
 const Scripts = () => {
-  const BLOG = useConfig()
+  const BLOG = useConfig();
 
   return (
     <>
@@ -15,10 +15,8 @@ const Scripts = () => {
       )}
       {BLOG.analytics && BLOG.analytics.provider === 'ga' && (
         <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${BLOG.analytics.gaConfig.measurementId}`}
-          />
-          <Script strategy="lazyOnload" id="ga">
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${BLOG.analytics.gaConfig.measurementId}`} />
+          <Script strategy='lazyOnload' id='ga'>
             {`window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
@@ -29,7 +27,7 @@ const Scripts = () => {
         </>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Scripts
+export default Scripts;

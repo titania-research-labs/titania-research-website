@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ['gravatar.com']
+    domains: ['gravatar.com'],
   },
   eslint: {
     // dirs: ['components', 'layouts', 'lib', 'pages']
@@ -12,13 +12,13 @@ module.exports = {
         headers: [
           {
             key: 'Permissions-Policy',
-            value: 'interest-cohort=()'
-          }
-        ]
-      }
-    ]
+            value: 'interest-cohort=()',
+          },
+        ],
+      },
+    ];
   },
-  transpilePackages: ['dayjs']
+  transpilePackages: ['dayjs'],
   // webpack: (config, { dev, isServer }) => {
   //   // Replace React with Preact only in client production build
   //   if (!dev && !isServer) {
@@ -30,4 +30,4 @@ module.exports = {
   //   }
   //   return config
   // }
-}
+};

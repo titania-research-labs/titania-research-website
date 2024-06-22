@@ -1,34 +1,34 @@
-import 'gitalk/dist/gitalk.css'
-import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
-import cn from 'classnames'
-import { fetchCusdisLang } from '@/lib/cusdisLang'
-import { useConfig } from '@/lib/config'
+import 'gitalk/dist/gitalk.css';
+import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+import cn from 'classnames';
+import { fetchCusdisLang } from '@/lib/cusdisLang';
+import { useConfig } from '@/lib/config';
 
 const GitalkComponent = dynamic(
   () => {
-    return import('gitalk/dist/gitalk-component')
+    return import('gitalk/dist/gitalk-component');
   },
-  { ssr: false }
-)
+  { ssr: false },
+);
 const UtterancesComponent = dynamic(
   () => {
-    return import('@/components/Utterances')
+    return import('@/components/Utterances');
   },
-  { ssr: false }
-)
+  { ssr: false },
+);
 const CusdisComponent = dynamic(
   () => {
-    return import('react-cusdis').then(m => m.ReactCusdis)
+    return import('react-cusdis').then(m => m.ReactCusdis);
   },
-  { ssr: false }
-)
+  { ssr: false },
+);
 
 const Comments = ({ frontMatter }) => {
-  const router = useRouter()
-  const BLOG = useConfig()
+  const router = useRouter();
+  const BLOG = useConfig();
 
-  const fullWidth = frontMatter.fullWidth ?? false
+  const fullWidth = frontMatter.fullWidth ?? false;
 
   return (
     <div
@@ -47,13 +47,11 @@ const Comments = ({ frontMatter }) => {
             repo: BLOG.comment.gitalkConfig.repo,
             owner: BLOG.comment.gitalkConfig.owner,
             admin: BLOG.comment.gitalkConfig.admin,
-            distractionFreeMode: BLOG.comment.gitalkConfig.distractionFreeMode
+            distractionFreeMode: BLOG.comment.gitalkConfig.distractionFreeMode,
           }}
         />
       )}
-      {BLOG.comment && BLOG.comment.provider === 'utterances' && (
-        <UtterancesComponent issueTerm={frontMatter.id} />
-      )}
+      {BLOG.comment && BLOG.comment.provider === 'utterances' && <UtterancesComponent issueTerm={frontMatter.id} />}
       {BLOG.comment && BLOG.comment.provider === 'cusdis' && (
         <CusdisComponent
           lang={fetchCusdisLang(BLOG.lang)}
@@ -63,12 +61,12 @@ const Comments = ({ frontMatter }) => {
             pageId: frontMatter.id,
             pageTitle: frontMatter.title,
             pageUrl: BLOG.link + router.asPath,
-            theme: BLOG.appearance
+            theme: BLOG.appearance,
           }}
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Comments
+export default Comments;
