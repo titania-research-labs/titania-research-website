@@ -1,6 +1,6 @@
 import { useConfig } from '@/lib/config'
 import Vercel from '@/components/Vercel'
-const Footer = ({ fullWidth }) => {
+const Footer = ({ isFullWidth }) => {
   const BLOG = useConfig()
 
   const d = new Date()
@@ -9,7 +9,7 @@ const Footer = ({ fullWidth }) => {
   return (
     <div
       className={`mt-6 flex-shrink-0 m-auto w-full text-gray-500 dark:text-gray-400 transition-all ${
-        !fullWidth ? 'max-w-2xl px-4' : 'px-4 md:px-24'
+        isFullWidth ? 'px-4 md:px-24' : 'max-w-4xl px-4'
       }`}
     >
       <hr className="border-gray-200 dark:border-gray-600" />

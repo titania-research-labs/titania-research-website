@@ -5,12 +5,11 @@ import cn from 'classnames'
 import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import { useLocale } from '@/lib/locale'
 import { useConfig } from '@/lib/config'
-import { createHash } from 'crypto'
 import Container from '@/components/Container'
 import Post from '@/components/Post'
 import Comments from '@/components/Comments'
 
-export default function BlogPost ({ post, blockMap, emailHash }) {
+export default function BlogPost ({ post, blockMap }) {
   const router = useRouter()
   const BLOG = useConfig()
   const locale = useLocale()
@@ -18,7 +17,7 @@ export default function BlogPost ({ post, blockMap, emailHash }) {
   // TODO: It would be better to render something
   if (router.isFallback) return null
 
-  const fullWidth = post.fullWidth ?? false
+  const isFullWidth = post.fullWidth ?? false
 
   return (
     <Container
@@ -28,20 +27,19 @@ export default function BlogPost ({ post, blockMap, emailHash }) {
       slug={post.slug}
       // date={new Date(post.publishedAt).toISOString()}
       type="article"
-      fullWidth={fullWidth}
+      isFullWidth={isFullWidth}
     >
       <Post
         post={post}
         blockMap={blockMap}
-        emailHash={emailHash}
-        fullWidth={fullWidth}
+        isFullWidth={isFullWidth}
       />
 
       {/* Back and Top */}
       <div
         className={cn(
           'px-4 flex justify-between font-medium text-gray-500 dark:text-gray-400 my-5',
-          fullWidth ? 'md:px-24' : 'mx-auto max-w-2xl'
+          isFullWidth ? 'md:px-24' : 'mx-auto max-w-4xl'
         )}
       >
         <a>
@@ -85,14 +83,9 @@ export async function getStaticProps ({ params: { slug } }) {
   if (!post) return { notFound: true }
 
   const blockMap = await getPostBlocks(post.id)
-  const emailHash = createHash('md5')
-    .update(clientConfig.email)
-    .digest('hex')
-    .trim()
-    .toLowerCase()
 
   return {
-    props: { post, blockMap, emailHash },
+    props: { post, blockMap },
     revalidate: 1
   }
 }
