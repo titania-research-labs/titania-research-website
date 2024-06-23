@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-import Image from 'next/image';
 import cn from 'classnames';
-import { useConfig } from '@/lib/config';
 import useTheme from '@/lib/theme';
 import FormattedDate from '@/components/FormattedDate';
 import TagItem from '@/components/TagItem';
@@ -9,37 +7,35 @@ import NotionRenderer from '@/components/NotionRenderer';
 import TableOfContents from '@/components/TableOfContents';
 
 /**
- * A post renderer
+ * A page renderer
  *
- * @param {PostProps} props
+ * @param {PageProps} props
  *
- * @typedef {object} PostProps
- * @prop {object}   post       - Post metadata
- * @prop {object}   blockMap   - Post block data
+ * @typedef {object} PageProps
+ * @prop {object}   page       - Page metadata
+ * @prop {object}   blockMap   - Page block data
  * @prop {boolean} [isFullWidth] - Whether in full-width mode
  */
-export default function Post(props) {
-  const BLOG = useConfig();
-  const { post, blockMap, isFullWidth = false } = props;
+export default function Page({ page, blockMap, isFullWidth = false }) {
   const { dark } = useTheme();
 
   return (
     <article className={cn('flex flex-col', isFullWidth ? 'md:px-24' : 'items-center')}>
       <h1 className={cn('w-full font-bold text-3xl text-black dark:text-white', { 'max-w-4xl px-4': !isFullWidth })}>
-        {post.title}
+        {page.title}
       </h1>
-      {post.type[0] !== 'Page' && (
+      {page.type[0] !== 'Page' && (
         <nav
           className={cn('w-full flex mt-7 items-start text-gray-500 dark:text-gray-400', {
             'max-w-4xl px-4': !isFullWidth,
           })}
         >
           <div className='mr-2 mb-4 md:ml-0'>
-            <FormattedDate date={post.date} />
+            <FormattedDate date={page.date} />
           </div>
-          {post.tags && (
+          {page.tags && (
             <div className='flex flex-nowrap max-w-full overflow-x-auto article-tags'>
-              {post.tags.map(tag => (
+              {page.tags.map(tag => (
                 <TagItem key={tag} tag={tag} />
               ))}
             </div>
@@ -65,8 +61,8 @@ export default function Post(props) {
   );
 }
 
-Post.propTypes = {
-  post: PropTypes.object.isRequired,
+Page.propTypes = {
+  page: PropTypes.object.isRequired,
   blockMap: PropTypes.object.isRequired,
   isFullWidth: PropTypes.bool,
 };

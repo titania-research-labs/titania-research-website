@@ -1,8 +1,9 @@
-import { getAllPosts } from '@/lib/notion';
+import { getAllPages } from '@/lib/notion';
 import { generateRss } from '@/lib/rss';
+
 export async function getServerSideProps({ res }) {
   res.setHeader('Content-Type', 'text/xml');
-  const posts = await getAllPosts({ includePages: false });
+  const posts = await getAllPages({ allowedTypes: ['Post'] });
   const latestPosts = posts.slice(0, 10);
   const xmlFeed = await generateRss(latestPosts);
   res.write(xmlFeed);
@@ -11,5 +12,7 @@ export async function getServerSideProps({ res }) {
     props: {},
   };
 }
+
 const feed = () => null;
+
 export default feed;

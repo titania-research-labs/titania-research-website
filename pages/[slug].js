@@ -2,14 +2,14 @@ import { clientConfig } from '@/lib/server/config';
 
 import { useRouter } from 'next/router';
 import cn from 'classnames';
-import { getAllPosts, getPostBlocks } from '@/lib/notion';
+import { getAllPages, getPostBlocks } from '@/lib/notion';
 import { useLocale } from '@/lib/locale';
 import { useConfig } from '@/lib/config';
 import Container from '@/components/Container';
-import Post from '@/components/Post';
+import Page from '@/components/Page';
 import Comments from '@/components/Comments';
 
-export default function BlogPost({ post, blockMap }) {
+export default function BlogPage({ page, blockMap }) {
   const router = useRouter();
   const BLOG = useConfig();
   const locale = useLocale();
@@ -17,19 +17,19 @@ export default function BlogPost({ post, blockMap }) {
   // TODO: It would be better to render something
   if (router.isFallback) return null;
 
-  const isFullWidth = post.fullWidth ?? false;
+  const isFullWidth = page.isFullWidth ?? false;
 
   return (
     <Container
       layout='blog'
-      title={post.title}
-      description={post.summary}
-      slug={post.slug}
-      // date={new Date(post.publishedAt).toISOString()}
+      title={page.title}
+      description={page.summary}
+      slug={page.slug}
+      // date={new Date(page.publishedAt).toISOString()}
       type='article'
       isFullWidth={isFullWidth}
     >
-      <Post post={post} blockMap={blockMap} isFullWidth={isFullWidth} />
+      <Page page={page} blockMap={blockMap} isFullWidth={isFullWidth} />
 
       {/* Back and Top */}
       <div
@@ -40,7 +40,7 @@ export default function BlogPost({ post, blockMap }) {
       >
         <a>
           <button
-            onClick={() => router.push(BLOG.path || '/')}
+            onClick={() => router.push(BLOG.path || page.type[0] === 'Jotting' ? '/jottings' : '/')}
             className='mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100'
           >
             ← {locale.POST.BACK}
@@ -61,29 +61,29 @@ export default function BlogPost({ post, blockMap }) {
         </a>
       </div>
 
-      <Comments frontMatter={post} />
+      <Comments frontMatter={page} />
     </Container>
   );
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts({ includePages: true });
+  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Jotting'] });
   return {
-    paths: posts.map(row => `${clientConfig.path}/${row.slug}`),
+    paths: pages.map(row => `${clientConfig.path}/${row.slug}`),
     fallback: true,
   };
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const posts = await getAllPosts({ includePages: true });
-  const post = posts.find(t => t.slug === slug);
+  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Jotting'] });
+  const page = pages.find(t => t.slug === slug);
 
-  if (!post) return { notFound: true };
+  if (!page) return { notFound: true };
 
-  const blockMap = await getPostBlocks(post.id);
+  const blockMap = await getPostBlocks(page.id);
 
   return {
-    props: { post, blockMap },
+    props: { page, blockMap },
     revalidate: 1,
   };
 }

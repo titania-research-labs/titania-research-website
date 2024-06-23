@@ -10,9 +10,10 @@ const NavBar = () => {
   const locale = useLocale();
   const links = [
     { id: 0, name: locale.NAV.INDEX, to: BLOG.path || '/', show: true },
-    { id: 1, name: locale.NAV.ABOUT, to: '/about', show: BLOG.showAbout },
-    { id: 2, name: locale.NAV.SEARCH, to: '/search', show: true },
-    // { id: 3, name: locale.NAV.RSS, to: '/feed', show: true, external: true }
+    { id: 1, name: locale.NAV.JOTTINGS, to: BLOG.path || '/jottings', show: true },
+    { id: 2, name: locale.NAV.ABOUT, to: '/about', show: true },
+    { id: 3, name: locale.NAV.SEARCH, to: '/search', show: true },
+    // { id: 4, name: locale.NAV.RSS, to: '/feed', show: true, external: true }
   ];
   return (
     <div className='flex-shrink-0'>
@@ -105,7 +106,7 @@ export default function Header({ navBarTitle, isFullWidth }) {
         </svg>
         <div className='flex items-center'>
           <Link href='/' aria-label={BLOG.title}>
-            <Image src={favicon} width={24} height={24} alt={BLOG.title} onError={() => setFavicon(true)} />
+            <Image src={favicon} width={44} height={44} alt={BLOG.title} onError={() => setFavicon(true)} />
           </Link>
           <HeaderName
             ref={titleRef}

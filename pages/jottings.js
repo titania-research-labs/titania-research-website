@@ -3,31 +3,31 @@ import { clientConfig } from '@/lib/server/config';
 import Container from '@/components/Container';
 import BlogPost from '@/components/BlogPost';
 import Pagination from '@/components/Pagination';
-import { getAllPages } from '@/lib/notion';
 import { useConfig } from '@/lib/config';
+import { getAllPages } from '@/lib/notion';
 
 export async function getStaticProps() {
-  const posts = await getAllPages({ allowedTypes: ['Post'] });
-  const postsToShow = posts.slice(0, clientConfig.postsPerPage);
-  const totalPosts = posts.length;
-  const showNext = totalPosts > clientConfig.postsPerPage;
+  const jottings = await getAllPages({ allowedTypes: ['Jotting'] });
+  const jottingsToShow = jottings.slice(0, clientConfig.postsPerPage);
+  const totalJottings = jottings.length;
+  const showNext = totalJottings > clientConfig.postsPerPage;
   return {
     props: {
       page: 1, // current page is 1
-      postsToShow,
+      jottingsToShow,
       showNext,
     },
     revalidate: 1,
   };
 }
 
-export default function Blog({ postsToShow, page, showNext }) {
+export default function Jottings({ jottingsToShow, page, showNext }) {
   const { title, description } = useConfig();
 
   return (
     <Container title={title} description={description}>
-      {postsToShow.map(post => (
-        <BlogPost key={post.id} post={post} />
+      {jottingsToShow.map(jotting => (
+        <BlogPost key={jotting.id} post={jotting} />
       ))}
       {showNext && <Pagination page={page} showNext={showNext} />}
     </Container>

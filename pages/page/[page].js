@@ -3,7 +3,7 @@ import { config } from '@/lib/server/config';
 import Container from '@/components/Container';
 import BlogPost from '@/components/BlogPost';
 import Pagination from '@/components/Pagination';
-import { getAllPosts } from '@/lib/notion';
+import { getAllPages } from '@/lib/notion';
 
 const Page = ({ postsToShow, page, showNext }) => {
   return (
@@ -16,10 +16,11 @@ const Page = ({ postsToShow, page, showNext }) => {
 
 export async function getStaticProps(context) {
   const { page } = context.params; // Get Current Page No.
-  const posts = await getAllPosts({ includePages: false });
+  const posts = await getAllPages({ allowedTypes: ['Post'] });
   const postsToShow = posts.slice(config.postsPerPage * (page - 1), config.postsPerPage * page);
   const totalPosts = posts.length;
   const showNext = page * config.postsPerPage < totalPosts;
+
   return {
     props: {
       page, // Current Page
@@ -31,7 +32,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts({ includePages: false });
+  const posts = await getAllPages({ allowedTypes: ['Post'] });
   const totalPosts = posts.length;
   const totalPages = Math.ceil(totalPosts / config.postsPerPage);
   return {
