@@ -2,13 +2,13 @@ import FormattedDate from '@/components/FormattedDate';
 import { useConfig } from '@/lib/config';
 import Link from 'next/link';
 
-const BlogPost = ({ post }) => {
+const JottingLink = ({ post }) => {
   const BLOG = useConfig();
 
   return (
     <Link href={`${BLOG.path}/${post.slug}`}>
       <article key={post.id} className='mb-6 md:mb-8'>
-        <header className='flex flex-col justify-between md:flex-row md:items-baseline'>
+        <header className='flex flex-col md:items-baseline grid-cols-2 md:grid-cols-3 gap-2'>
           <h2 className='text-lg md:text-xl font-medium mb-2 cursor-pointer text-black dark:text-gray-100'>
             {post.title}
           </h2>
@@ -16,12 +16,9 @@ const BlogPost = ({ post }) => {
             <FormattedDate date={post.date} />
           </time>
         </header>
-        <main>
-          <p className='hidden md:block leading-8 text-gray-700 dark:text-gray-300'>{post.summary}</p>
-        </main>
       </article>
     </Link>
   );
 };
 
-export default BlogPost;
+export default JottingLink;

@@ -1,10 +1,10 @@
 import { clientConfig } from '@/lib/server/config';
 
 import Container from '@/components/Container';
-import BlogPost from '@/components/BlogPost';
 import Pagination from '@/components/Pagination';
 import { getAllPages } from '@/lib/notion';
 import { useConfig } from '@/lib/config';
+import BlogPostLink from '@/components/BlogPostLink';
 
 export async function getStaticProps() {
   const posts = await getAllPages({ allowedTypes: ['Post'] });
@@ -27,7 +27,7 @@ export default function Blog({ postsToShow, page, showNext }) {
   return (
     <Container title={title} description={description}>
       {postsToShow.map(post => (
-        <BlogPost key={post.id} post={post} />
+        <BlogPostLink key={post.id} post={post} />
       ))}
       {showNext && <Pagination page={page} showNext={showNext} />}
     </Container>

@@ -1,14 +1,14 @@
 import { config } from '@/lib/server/config';
 
 import Container from '@/components/Container';
-import BlogPost from '@/components/BlogPost';
 import Pagination from '@/components/Pagination';
 import { getAllPages } from '@/lib/notion';
+import BlogPostLink from '@/components/BlogPostLink';
 
 const Page = ({ postsToShow, page, showNext }) => {
   return (
     <Container>
-      {postsToShow && postsToShow.map(post => <BlogPost key={post.id} post={post} />)}
+      {postsToShow && postsToShow.map(post => <BlogPostLink key={post.id} post={post} />)}
       <Pagination page={page} showNext={showNext} />
     </Container>
   );

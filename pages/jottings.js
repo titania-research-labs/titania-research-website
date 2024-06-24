@@ -1,10 +1,10 @@
 import { clientConfig } from '@/lib/server/config';
 
 import Container from '@/components/Container';
-import BlogPost from '@/components/BlogPost';
 import Pagination from '@/components/Pagination';
 import { useConfig } from '@/lib/config';
 import { getAllPages } from '@/lib/notion';
+import JottingLink from '@/components/JottingLink';
 
 export async function getStaticProps() {
   const jottings = await getAllPages({ allowedTypes: ['Jotting'] });
@@ -26,9 +26,11 @@ export default function Jottings({ jottingsToShow, page, showNext }) {
 
   return (
     <Container title={title} description={description}>
-      {jottingsToShow.map(jotting => (
-        <BlogPost key={jotting.id} post={jotting} />
-      ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {jottingsToShow.map(jotting => (
+          <JottingLink key={jotting.id} post={jotting} />
+        ))}
+      </div>
       {showNext && <Pagination page={page} showNext={showNext} />}
     </Container>
   );
