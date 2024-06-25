@@ -54,7 +54,7 @@ const Comments = ({ frontMatter }) => {
       {BLOG.comment && BLOG.comment.provider === 'utterances' && <UtterancesComponent issueTerm={frontMatter.id} />}
       {BLOG.comment && BLOG.comment.provider === 'cusdis' && (
         <CusdisComponent
-          lang={fetchCusdisLang(BLOG.lang)}
+          lang={fetchCusdisLang('en-US')}
           attrs={{
             host: BLOG.comment.cusdisConfig.host,
             appId: BLOG.comment.cusdisConfig.appId,

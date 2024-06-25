@@ -16,7 +16,7 @@ class MyDocument extends Document {
     }[config.appearance];
 
     return (
-      <Html lang={config.lang} className={cn(initialColorScheme)}>
+      <Html lang={'en-US'} className={cn(initialColorScheme)}>
         <Head>
           {config.font && config.font === 'serif' ? (
             <>
@@ -54,32 +54,6 @@ class MyDocument extends Document {
             </>
           )}
 
-          {['zh', 'ja', 'ko'].includes(config.lang.slice(0, 2).toLocaleLowerCase()) && (
-            <>
-              <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
-              <link
-                rel='preload'
-                as='style'
-                href={`https://fonts.googleapis.com/css2?family=Noto+${
-                  config.font === 'serif' ? 'Serif' : 'Sans'
-                }+${CJK()}:wght@400;500;700&display=swap`}
-              />
-              <link
-                rel='stylesheet'
-                href={`https://fonts.googleapis.com/css2?family=Noto+${
-                  config.font === 'serif' ? 'Serif' : 'Sans'
-                }+${CJK()}:wght@400;500;700&display=swap`}
-              />
-              <noscript>
-                <link
-                  rel='stylesheet'
-                  href={`https://fonts.googleapis.com/css2?family=Noto+${
-                    config.font === 'serif' ? 'Serif' : 'Sans'
-                  }+${CJK()}:wght@400;500;700&display=swap`}
-                />
-              </noscript>
-            </>
-          )}
           <link rel='icon' href='/favicon.png' />
           <link rel='alternate' type='application/rss+xml' title='RSS 2.0' href='/feed'></link>
           {config.appearance === 'auto' ? (

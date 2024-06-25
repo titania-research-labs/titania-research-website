@@ -5,7 +5,6 @@ import App from 'next/app';
 import '@/styles/globals.css';
 import '@/styles/notion.css';
 import dynamic from 'next/dynamic';
-import loadLocale from '@/assets/i18n';
 import { ConfigProvider } from '@/lib/config';
 import { LocaleProvider } from '@/lib/locale';
 import { prepareDayjs } from '@/lib/dayjs';
@@ -48,6 +47,6 @@ MyApp.getInitialProps = async ctx => {
   return {
     ...App.getInitialProps(ctx),
     config,
-    locale: await loadLocale('basic', config.lang),
+    locale: 'en',
   };
 };

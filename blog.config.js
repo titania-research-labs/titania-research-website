@@ -4,7 +4,6 @@ const BLOG = {
   email: 'banri.yanahama@gmail.com',
   link: 'https://banr1.vercel.app',
   description: "banri's personal website.",
-  lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Tokyo', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'auto', // ['light', 'dark', 'auto'],
   font: 'sans-serif', // ['sans-serif', 'serif']

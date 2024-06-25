@@ -3,7 +3,6 @@ import { clientConfig } from '@/lib/server/config';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 import { getAllPages, getPostBlocks } from '@/lib/notion';
-import { useLocale } from '@/lib/locale';
 import { useConfig } from '@/lib/config';
 import Container from '@/components/Container';
 import Page from '@/components/Page';
@@ -12,7 +11,6 @@ import Comments from '@/components/Comments';
 export default function BlogPage({ page, blockMap }) {
   const router = useRouter();
   const BLOG = useConfig();
-  const locale = useLocale();
 
   // TODO: It would be better to render something
   if (router.isFallback) return null;
@@ -43,7 +41,7 @@ export default function BlogPage({ page, blockMap }) {
             onClick={() => router.push(BLOG.path || page.type[0] === 'Jotting' ? '/jottings' : '/')}
             className='mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100'
           >
-            ← {locale.POST.BACK}
+            ← Back
           </button>
         </a>
         <a>
@@ -56,7 +54,7 @@ export default function BlogPage({ page, blockMap }) {
             }
             className='mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100'
           >
-            ↑ {locale.POST.TOP}
+            ↑ Top
           </button>
         </a>
       </div>

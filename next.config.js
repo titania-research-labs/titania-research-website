@@ -2,6 +2,10 @@ module.exports = {
   images: {
     domains: ['gravatar.com'],
   },
+  // i18n: {
+  //   locales: ['en', 'ja'],
+  //   defaultLocale: 'en',
+  // },
   eslint: {
     // dirs: ['components', 'layouts', 'lib', 'pages']
   },
