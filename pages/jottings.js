@@ -26,7 +26,7 @@ export default function Jottings({ jottingsToShow, page, showNext }) {
 
   return (
     <Container title={title} description={description}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
         {jottingsToShow.map(jotting => (
           <JottingLink key={jotting.id} post={jotting} />
         ))}

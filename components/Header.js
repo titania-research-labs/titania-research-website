@@ -3,19 +3,22 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useConfig } from '@/lib/config';
 import useTheme from '@/lib/theme';
+import { useRouter } from 'next/router';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const NavBar = () => {
   const BLOG = useConfig();
+  const { locale } = useRouter();
   const links = [
-    { id: 0, name: 'Blog', to: BLOG.path || '/', show: true },
-    { id: 1, name: 'Jottings', to: BLOG.path || '/jottings', show: true },
-    { id: 2, name: 'About', to: '/about', show: true },
-    { id: 3, name: 'Search', to: '/search', show: true },
+    { id: 0, name: 'Blog', to: BLOG.path || `/${locale}`, show: true },
+    { id: 1, name: 'Jottings', to: BLOG.path || `/${locale}/jottings`, show: true },
+    { id: 2, name: 'About', to: `/${locale}/about`, show: true },
+    { id: 3, name: 'Search', to: `/${locale}/search`, show: true },
     // { id: 4, name: 'RSS', to: '/feed', show: true, external: true }
   ];
   return (
-    <div className='flex-shrink-0'>
-      <ul className='flex flex-row'>
+    <div className='flex flex-row flex-shrink-0 items-center'>
+      <ul className='flex flex-row pr-4'>
         {links.map(
           link =>
             link.show && (
@@ -27,6 +30,7 @@ const NavBar = () => {
             ),
         )}
       </ul>
+      <LanguageSwitcher />
     </div>
   );
 };

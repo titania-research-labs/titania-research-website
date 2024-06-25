@@ -1,7 +1,6 @@
 import Container from '@/components/Container';
 
 export default function Page404() {
-
   return (
     <Container>
       <h1 className='text-5xl text-black dark:text-white text-center'>404</h1>

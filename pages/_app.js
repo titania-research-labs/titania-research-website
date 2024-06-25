@@ -10,11 +10,22 @@ import { LocaleProvider } from '@/lib/locale';
 import { prepareDayjs } from '@/lib/dayjs';
 import { ThemeProvider } from '@/lib/theme';
 import Scripts from '@/components/Scripts';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false });
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false });
 
 export default function MyApp({ Component, pageProps, config, locale }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const userLang = navigator.language;
+    if (userLang.startsWith('ja') && router.locale !== 'ja') {
+      router.push(router.pathname, router.asPath, { locale: 'ja' });
+    }
+  }, [router]);
+
   return (
     <ConfigProvider value={config}>
       <Scripts />

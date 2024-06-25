@@ -2,7 +2,7 @@ import { clientConfig } from '@/lib/server/config';
 
 import { useRouter } from 'next/router';
 import cn from 'classnames';
-import { getAllPages, getPostBlocks } from '@/lib/notion';
+import { getAllPages, getPageBlocks } from '@/lib/notion';
 import { useConfig } from '@/lib/config';
 import Container from '@/components/Container';
 import Page from '@/components/Page';
@@ -64,21 +64,23 @@ export default function BlogPage({ page, blockMap }) {
   );
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Jotting'] });
   return {
-    paths: pages.map(row => `${clientConfig.path}/${row.slug}`),
+    paths: locales.flatMap(locale => pages.map(row => `${clientConfig.path}/${locale}/${row.slug}`)),
     fallback: true,
   };
 }
 
-export async function getStaticProps({ params: { slug } }) {
+export async function getStaticProps({ params: { slug }, locale }) {
   const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Jotting'] });
-  const page = pages.find(t => t.slug === slug);
+  // Find the current page by slug and locale
+  // If the locale is not found, use the default locale
+  const page = pages.find(row => row.slug === slug && row.locale === locale) || pages.find(row => row.slug === slug);
 
   if (!page) return { notFound: true };
 
-  const blockMap = await getPostBlocks(page.id);
+  const blockMap = await getPageBlocks(page.id);
 
   return {
     props: { page, blockMap },
