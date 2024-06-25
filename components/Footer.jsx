@@ -1,5 +1,6 @@
 import { useConfig } from '@/lib/config';
 import Vercel from '@/components/Vercel';
+
 const Footer = ({ isFullWidth }) => {
   const BLOG = useConfig();
 

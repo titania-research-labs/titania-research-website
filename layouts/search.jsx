@@ -49,9 +49,11 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
     </Container>
   );
 };
+
 SearchLayout.propTypes = {
   posts: PropTypes.array.isRequired,
   tags: PropTypes.object.isRequired,
   currentTag: PropTypes.string,
 };
+
 export default SearchLayout;

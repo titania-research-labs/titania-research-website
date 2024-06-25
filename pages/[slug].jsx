@@ -76,7 +76,8 @@ export async function getStaticProps({ params: { slug }, locale }) {
   const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Jotting'] });
   // Find the current page by slug and locale
   // If the locale is not found, use the default locale
-  const page = pages.find(page => page.slug === slug && page.lang[0] === locale) || pages.find(page => page.slug === slug);
+  const page =
+    pages.find(page => page.slug === slug && page.lang[0] === locale) || pages.find(page => page.slug === slug);
 
   if (!page) return { notFound: true };
 
