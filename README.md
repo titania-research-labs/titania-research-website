@@ -2,6 +2,9 @@
 
 This is the source code for my personal website.
 
+This repository is forked from [Nobelium](https://github.com/craigary/nobelium).
+
+
 ## Commands
 
 Start the development server:
