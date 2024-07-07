@@ -10,8 +10,8 @@ const NavBar = () => {
   const BLOG = useConfig();
   const { locale } = useRouter();
   const links = [
-    { id: 0, name: 'Blog', to: BLOG.path || `/${locale}`, show: true },
-    { id: 1, name: 'Jottings', to: BLOG.path || `/${locale}/jottings`, show: true },
+    { id: 0, name: 'Blog', to: `/${locale}`, show: true },
+    { id: 1, name: 'Jottings', to: `/${locale}/jottings`, show: true },
     { id: 2, name: 'About', to: `/${locale}/about`, show: true },
     { id: 3, name: 'Search', to: `/${locale}/search`, show: true },
     // { id: 4, name: 'RSS', to: '/feed', show: true, external: true }

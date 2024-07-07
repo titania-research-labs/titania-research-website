@@ -9,7 +9,7 @@ import cn from 'classnames';
 const Container = ({ children, layout, isFullWidth, ...customMeta }) => {
   const BLOG = useConfig();
 
-  const url = BLOG.path.length ? `${BLOG.link}/${BLOG.path}` : BLOG.link;
+  const url = BLOG.link;
   const meta = {
     title: BLOG.title,
     type: 'website',

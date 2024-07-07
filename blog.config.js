@@ -2,27 +2,23 @@ const BLOG = {
   title: "banri's website",
   author: 'banri',
   email: 'banri.yanahama@gmail.com',
-  link: 'https://banr1.vercel.app',
+  link: 'https://banris-website.vercel.app/',
   description: "banri's personal website.",
   timezone: 'Asia/Tokyo', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'auto', // ['light', 'dark', 'auto'],
   font: 'sans-serif', // ['sans-serif', 'serif']
   lightBackground: '#ffffff', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#18181B', // use hex value, don't forget '#'
-  path: '', // leave this empty unless you want to deploy Nobelium in a folder
   since: 2024, // If leave this empty, current year will be used.
+  path: '', // leave this empty unless you want to deploy Nobelium in a folder
   postsPerPage: 7,
-  sortByDate: true,
-  showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
-  socialLink: 'https://x.com/banr1_',
   seo: {
     keywords: ['Blog', 'Website', 'Notion', 'banri'],
     googleSiteVerification: '', // Remove the value or replace it with your own google site verification code
   },
-  notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS！！！
-  notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
+  notionPageId: process.env.NOTION_PAGE_ID,
   analytics: {
     provider: '', // Currently we support Google Analytics and Ackee, please fill with 'ga' or 'ackee', leave it empty to disable it.
     ackeeConfig: {
@@ -54,7 +50,6 @@ const BLOG = {
       scriptSrc: 'https://cusdis.com/js/cusdis.es.js', // change this if you're using self-hosted version
     },
   },
-  isProd: process.env.VERCEL_ENV === 'production', // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
 };
 
 // export default BLOG

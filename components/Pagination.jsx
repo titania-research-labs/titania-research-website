@@ -10,7 +10,7 @@ const Pagination = ({ page, showNext }) => {
   return (
     <div className={`flex font-medium text-black dark:text-gray-100 ${additionalClassName}`}>
       {currentPage !== 1 && (
-        <Link href={currentPage - 1 === 1 ? `${BLOG.path || '/'}` : `/page/${currentPage - 1}`}>
+        <Link href={currentPage - 1 === 1 ? '/' : `/page/${currentPage - 1}`}>
           <button rel='prev' className='block cursor-pointer'>
             ← Prev
           </button>
