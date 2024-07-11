@@ -21,7 +21,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Top({ postsToShow, page, showNext }) {
+export default function Writing({ postsToShow, page, showNext }) {
   const { title, description } = useConfig();
 
   return (

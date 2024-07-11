@@ -3,14 +3,12 @@ import { clientConfig } from '@/lib/server/config';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 import { getAllPages, getPageBlocks } from '@/lib/notion';
-import { useConfig } from '@/lib/config';
 import Container from '@/components/Container';
 import Page from '@/components/Page';
 import Comments from '@/components/Comments';
 
-export default function BlogPage({ page, blockMap }) {
+export default function WritingPage({ page, blockMap }) {
   const router = useRouter();
-  const BLOG = useConfig();
 
   // TODO: It would be better to render something
   if (router.isFallback) return null;
@@ -38,7 +36,7 @@ export default function BlogPage({ page, blockMap }) {
       >
         <a>
           <button
-            onClick={() => router.push('/')}
+            onClick={() => router.push(page.type[0] === 'Post' ? '/writings' : '/')}
             className='mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100'
           >
             ← Back
@@ -65,7 +63,7 @@ export default function BlogPage({ page, blockMap }) {
 }
 
 export async function getStaticPaths({ locales }) {
-  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Jotting'] });
+  const pages = await getAllPages({ allowedTypes: ['Page', 'Post'] });
   return {
     paths: locales.flatMap(locale => pages.map(page => `${clientConfig.path}/${locale}/${page.slug}`)),
     fallback: true,
@@ -73,7 +71,7 @@ export async function getStaticPaths({ locales }) {
 }
 
 export async function getStaticProps({ params: { slug }, locale }) {
-  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Jotting'] });
+  const pages = await getAllPages({ allowedTypes: ['Page', 'Post'] });
   // Find the current page by slug and locale
   // If the locale is not found, use the default locale
   const page =

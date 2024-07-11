@@ -4,7 +4,6 @@ import { useConfig } from '@/lib/config';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-// import BlogPost from './BlogPost'
 
 const Container = ({ children, layout, isFullWidth, ...customMeta }) => {
   const BLOG = useConfig();
