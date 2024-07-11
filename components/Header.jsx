@@ -1,16 +1,13 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useConfig } from '@/lib/config';
-import useTheme from '@/lib/theme';
 import { useRouter } from 'next/router';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const NavBar = () => {
-  const BLOG = useConfig();
   const { locale } = useRouter();
   const links = [
-    { id: 0, name: 'Writings', to: `/${locale}/writings`, show: true },
+    { id: 0, name: 'Blog', to: `/${locale}/blog`, show: true },
     { id: 1, name: 'About', to: `/${locale}/about`, show: true },
     { id: 2, name: 'Search', to: `/${locale}/search`, show: true },
   ];
@@ -35,19 +32,6 @@ const NavBar = () => {
 
 export default function Header({ navBarTitle, isFullWidth }) {
   const BLOG = useConfig();
-  const { dark } = useTheme();
-
-  // Favicon
-
-  const resolveFavicon = fallback => !fallback && '/favicon.png';
-  const [favicon, _setFavicon] = useState(resolveFavicon());
-  const setFavicon = fallback => _setFavicon(resolveFavicon(fallback));
-
-  useEffect(
-    () => setFavicon(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [dark],
-  );
 
   const useSticky = !BLOG.autoCollapsedNavBar;
   const navRef = useRef(/** @type {HTMLDivElement} */ undefined);
@@ -106,15 +90,13 @@ export default function Header({ navBarTitle, isFullWidth }) {
         </svg>
         <div className='flex items-center'>
           <Link href='/' aria-label={BLOG.title}>
-            <Image src={favicon} width={44} height={44} alt={BLOG.title} onError={() => setFavicon(true)} />
+            <HeaderName
+              ref={titleRef}
+              siteTitle={BLOG.title}
+              postTitle={navBarTitle}
+              onClick={handleClickHeader}
+            />
           </Link>
-          <HeaderName
-            ref={titleRef}
-            siteTitle={BLOG.title}
-            siteDescription={BLOG.description}
-            postTitle={navBarTitle}
-            onClick={handleClickHeader}
-          />
         </div>
         <NavBar />
       </div>
@@ -132,7 +114,6 @@ const HeaderName = forwardRef(function HeaderName({ siteTitle, siteDescription, 
       {postTitle && <span className='post-title row-start-1 col-start-1'>{postTitle}</span>}
       <span className='row-start-1 col-start-1'>
         <span className='site-title'>{siteTitle}</span>
-        <span className='site-description font-normal'>, {siteDescription}</span>
       </span>
     </p>
   );

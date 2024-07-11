@@ -4,7 +4,7 @@ import Container from '@/components/Container';
 import Pagination from '@/components/Pagination';
 import { getAllPages } from '@/lib/notion';
 import { useConfig } from '@/lib/config';
-import WritingPostLink from '@/components/WritingPostLink';
+import BlogPostLink from '@/components/BlogPostLink';
 
 export async function getStaticProps() {
   const posts = await getAllPages({ allowedTypes: ['Post'] });
@@ -21,13 +21,13 @@ export async function getStaticProps() {
   };
 }
 
-export default function Writing({ postsToShow, page, showNext }) {
+export default function Blog({ postsToShow, page, showNext }) {
   const { title, description } = useConfig();
 
   return (
     <Container title={title} description={description}>
       {postsToShow.map(post => (
-        <WritingPostLink key={post.id} post={post} />
+        <BlogPostLink key={post.id} post={post} />
       ))}
       {showNext && <Pagination page={page} showNext={showNext} />}
     </Container>

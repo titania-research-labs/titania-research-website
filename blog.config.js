@@ -1,6 +1,6 @@
 const BLOG = {
   title: "Titania Research",
-  author: 'banri',
+  author: 'Titania Research',
   email: 'banri.yanahama@gmail.com',
   link: 'titaniaresear.ch',
   description: "Titania Research",

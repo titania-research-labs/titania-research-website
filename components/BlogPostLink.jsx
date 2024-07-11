@@ -1,7 +1,7 @@
 import FormattedDate from '@/components/FormattedDate';
 import Link from 'next/link';
 
-const WritingPostLink = ({ post }) => {
+const BlogPostLink = ({ post }) => {
 
   return (
     <Link href={`/${post.slug}`}>
@@ -22,4 +22,4 @@ const WritingPostLink = ({ post }) => {
   );
 };
 
-export default WritingPostLink;
+export default BlogPostLink;

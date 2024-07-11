@@ -2,13 +2,13 @@ import { useState } from 'react';
 import Container from '@/components/Container';
 import Tags from '@/components/Tags';
 import PropTypes from 'prop-types';
-import WritingPostLink from '@/components/WritingPostLink';
+import BlogPostLink from '@/components/BlogPostLink';
 
 const SearchLayout = ({ tags, posts, currentTag }) => {
   const [searchValue, setSearchValue] = useState('');
-  let filteredWritingPosts = [];
+  let filteredBlogPosts = [];
   if (posts) {
-    filteredWritingPosts = posts.filter(post => {
+    filteredBlogPosts = posts.filter(post => {
       const tagContent = post.tags ? post.tags.join(' ') : '';
       const searchContent = post.title + post.summary + tagContent;
       return searchContent.toLowerCase().includes(searchValue.toLowerCase());
@@ -41,9 +41,9 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
       </div>
       <Tags tags={tags} currentTag={currentTag} />
       <div className='article-container my-8'>
-        {!filteredWritingPosts.length && <p className='text-gray-500 dark:text-gray-300'>No posts found.</p>}
-        {filteredWritingPosts.slice(0, 20).map(post => (
-          <WritingPostLink key={post.id} post={post} />
+        {!filteredBlogPosts.length && <p className='text-gray-500 dark:text-gray-300'>No posts found.</p>}
+        {filteredBlogPosts.slice(0, 20).map(post => (
+          <BlogPostLink key={post.id} post={post} />
         ))}
       </div>
     </Container>

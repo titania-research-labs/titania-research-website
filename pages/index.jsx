@@ -1,35 +1,62 @@
-import { clientConfig } from '@/lib/server/config';
-
+import cn from 'classnames';
+import { getAllPages, getPageBlocks } from '@/lib/notion';
 import Container from '@/components/Container';
-import Pagination from '@/components/Pagination';
-import { getAllPages } from '@/lib/notion';
-import { useConfig } from '@/lib/config';
-import WritingPostLink from '@/components/WritingPostLink';
+import Page from '@/components/Page';
 
-export async function getStaticProps() {
-  const posts = await getAllPages({ allowedTypes: ['Post'] });
-  const postsToShow = posts.slice(0, clientConfig.postsPerPage);
-  const totalPosts = posts.length;
-  const showNext = totalPosts > clientConfig.postsPerPage;
-  return {
-    props: {
-      page: 1, // current page is 1
-      postsToShow,
-      showNext,
-    },
-    revalidate: 1,
-  };
-}
+export default function IndexPage({ page, blockMap }) {
+  if (!page) return null;
 
-export default function Top({ postsToShow, page, showNext }) {
-  const { title, description } = useConfig();
+  const isFullWidth = page.isFullWidth ?? false;
 
   return (
-    <Container title={title} description={description}>
-      {postsToShow.map(post => (
-        <WritingPostLink key={post.id} post={post} />
-      ))}
-      {showNext && <Pagination page={page} showNext={showNext} />}
+    <Container
+      layout='top'
+      title={page.title}
+      description={page.summary}
+      slug={page.slug}
+      type='top'
+      isFullWidth={isFullWidth}
+    >
+      <Page page={page} blockMap={blockMap} isFullWidth={isFullWidth} />
+
+      {/* Top */}
+      <div
+        className={cn(
+          'px-4 flex justify-end font-medium text-gray-500 dark:text-gray-400 my-5',
+          isFullWidth ? 'md:px-24' : 'mx-auto max-w-4xl',
+        )}
+      >
+        <a>
+          <button
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              })
+            }
+            className='mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100'
+          >
+            ↑ Top
+          </button>
+        </a>
+      </div>
     </Container>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  const slug = 'index';
+  const pages = await getAllPages({ allowedTypes: ['Page'] });
+  const page =
+    pages.find(page => page.slug === slug && page.lang[0] === locale) ||
+    pages.find(page => page.slug === slug);
+
+  if (!page) return { notFound: true };
+
+  const blockMap = await getPageBlocks(page.id);
+
+  return {
+    props: { page, blockMap },
+    revalidate: 1,
+  };
 }
