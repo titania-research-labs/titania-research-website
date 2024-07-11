@@ -1,4 +1,4 @@
-export default BLOG = {
+const BLOG = {
   title: 'Titania Research',
   author: 'Titania Research',
   email: 'banri.yanahama@gmail.com',
@@ -50,3 +50,5 @@ export default BLOG = {
     },
   },
 };
+
+module.exports = BLOG;
