@@ -1,4 +1,5 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useConfig } from '@/lib/config';
 import { useRouter } from 'next/router';
@@ -35,6 +36,18 @@ const NavBar = () => {
 
 export default function Header({ navBarTitle, isFullWidth }) {
   const BLOG = useConfig();
+
+  // Favicon
+
+  const resolveFavicon = fallback => !fallback && '/favicon.png';
+  const [favicon, _setFavicon] = useState(resolveFavicon());
+  const setFavicon = fallback => _setFavicon(resolveFavicon(fallback));
+
+  // useEffect(
+  //   () => setFavicon(),
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   [dark],
+  // );
 
   const useSticky = !BLOG.autoCollapsedNavBar;
   const navRef = useRef(/** @type {HTMLDivElement} */ undefined);
@@ -75,7 +88,7 @@ export default function Header({ navBarTitle, isFullWidth }) {
     <>
       <div className='observer-element h-4 md:h-12' ref={sentinelRef}></div>
       <div
-        className={`sticky-nav group m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-opacity-60 ${
+        className={`sticky-nav group m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-white dark:bg-gray-900 ${
           isFullWidth ? 'px-4 md:px-24' : 'max-w-5xl px-4'
         }`}
         id='sticky-nav'
@@ -92,7 +105,8 @@ export default function Header({ navBarTitle, isFullWidth }) {
           />
         </svg>
         <div className='flex items-center'>
-          <Link href='/' aria-label={BLOG.title}>
+        <Image src={favicon} width={19} height={19} alt='fairy' onError={() => setFavicon(true)} />
+        <Link href='/' aria-label={BLOG.title}>
             <HeaderName ref={titleRef} siteTitle={BLOG.title} postTitle={navBarTitle} onClick={handleClickHeader} />
           </Link>
         </div>
