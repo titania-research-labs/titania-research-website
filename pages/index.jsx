@@ -48,8 +48,7 @@ export async function getStaticProps({ locale }) {
   const slug = 'index';
   const pages = await getAllPages({ allowedTypes: ['Page'] });
   const page =
-    pages.find(page => page.slug === slug && page.lang[0] === locale) ||
-    pages.find(page => page.slug === slug);
+    pages.find(page => page.slug === slug && page.lang[0] === locale) || pages.find(page => page.slug === slug);
 
   if (!page) return { notFound: true };
 

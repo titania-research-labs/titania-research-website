@@ -2,7 +2,6 @@ import FormattedDate from '@/components/FormattedDate';
 import Link from 'next/link';
 
 const BlogPostLink = ({ post }) => {
-
   return (
     <Link href={`/${post.slug}`}>
       <article key={post.id} className='mb-6 md:mb-8'>

@@ -7,23 +7,26 @@ import LanguageSwitcher from './LanguageSwitcher';
 const NavBar = () => {
   const { locale } = useRouter();
   const links = [
-    { id: 0, name: 'Blog', to: `/${locale}/blog`, show: true },
-    { id: 1, name: 'About', to: `/${locale}/about`, show: true },
-    { id: 2, name: 'Search', to: `/${locale}/search`, show: true },
+    { id: 0, name: 'Blog', to: `/${locale}/blog` },
+    { id: 1, name: 'Events', to: `/${locale}/events` },
+    {
+      id: 2,
+      name: 'About',
+      to: 'https://scandalous-stick-9ab.notion.site/Titania-Research-Homepage-587cd20f07b14d259fa7d5c8d9646fc9',
+      external: true,
+    },
+    { id: 3, name: 'Search', to: `/${locale}/search` },
   ];
   return (
     <div className='flex flex-row flex-shrink-0 items-center'>
       <ul className='flex flex-row pr-4'>
-        {links.map(
-          link =>
-            link.show && (
-              <li key={link.id} className='block ml-4 text-black dark:text-gray-50 nav'>
-                <Link href={link.to} target={link.external ? '_blank' : null}>
-                  {link.name}
-                </Link>
-              </li>
-            ),
-        )}
+        {links.map(link => (
+          <li key={link.id} className='block ml-4 text-black dark:text-gray-50 nav'>
+            <Link href={link.to} target={link.external ? '_blank' : null}>
+              {link.name}
+            </Link>
+          </li>
+        ))}
       </ul>
       <LanguageSwitcher />
     </div>
@@ -90,12 +93,7 @@ export default function Header({ navBarTitle, isFullWidth }) {
         </svg>
         <div className='flex items-center'>
           <Link href='/' aria-label={BLOG.title}>
-            <HeaderName
-              ref={titleRef}
-              siteTitle={BLOG.title}
-              postTitle={navBarTitle}
-              onClick={handleClickHeader}
-            />
+            <HeaderName ref={titleRef} siteTitle={BLOG.title} postTitle={navBarTitle} onClick={handleClickHeader} />
           </Link>
         </div>
         <NavBar />
@@ -104,7 +102,7 @@ export default function Header({ navBarTitle, isFullWidth }) {
   );
 }
 
-const HeaderName = forwardRef(function HeaderName({ siteTitle, siteDescription, postTitle, onClick }, ref) {
+const HeaderName = forwardRef(function HeaderName({ siteTitle, postTitle, onClick }, ref) {
   return (
     <p
       ref={ref}

@@ -1,9 +1,9 @@
 const BLOG = {
-  title: "Titania Research",
+  title: 'Titania Research',
   author: 'Titania Research',
   email: 'banri.yanahama@gmail.com',
   link: 'titaniaresear.ch',
-  description: "Titania Research",
+  description: 'Titania Research',
   timezone: 'Asia/Tokyo', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'light', // ['light', 'dark', 'auto'],
   font: 'sans-serif', // ['sans-serif', 'serif']
