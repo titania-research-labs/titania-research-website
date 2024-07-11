@@ -11,10 +11,8 @@ const NavBar = () => {
   const { locale } = useRouter();
   const links = [
     { id: 0, name: 'Blog', to: `/${locale}`, show: true },
-    { id: 1, name: 'Jottings', to: `/${locale}/jottings`, show: true },
-    { id: 2, name: 'About', to: `/${locale}/about`, show: true },
-    { id: 3, name: 'Search', to: `/${locale}/search`, show: true },
-    // { id: 4, name: 'RSS', to: '/feed', show: true, external: true }
+    { id: 1, name: 'About', to: `/${locale}/about`, show: true },
+    { id: 2, name: 'Search', to: `/${locale}/search`, show: true },
   ];
   return (
     <div className='flex flex-row flex-shrink-0 items-center'>

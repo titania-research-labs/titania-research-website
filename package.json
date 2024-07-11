@@ -1,10 +1,10 @@
 {
-  "name": "banris-website",
+  "name": "titania-research-website",
   "version": "0.1.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/banr1/banris-website.git"
+    "url": "https://github.com/titania-research-labs/titania-research-website.git"
   },
   "author": {
     "name": "banri",

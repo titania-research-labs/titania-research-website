@@ -1,11 +1,11 @@
 const BLOG = {
-  title: "banri's website",
+  title: "Titania Research",
   author: 'banri',
   email: 'banri.yanahama@gmail.com',
-  link: 'https://banris-website.vercel.app/',
-  description: "banri's personal website.",
+  link: 'titaniaresear.ch',
+  description: "Titania Research",
   timezone: 'Asia/Tokyo', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
-  appearance: 'auto', // ['light', 'dark', 'auto'],
+  appearance: 'light', // ['light', 'dark', 'auto'],
   font: 'sans-serif', // ['sans-serif', 'serif']
   lightBackground: '#ffffff', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#18181B', // use hex value, don't forget '#'
@@ -15,7 +15,7 @@ const BLOG = {
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
   seo: {
-    keywords: ['Blog', 'Website', 'Notion', 'banri'],
+    keywords: ['Blog', 'Website', 'Notion', 'Titania Research'],
     googleSiteVerification: '', // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID,
