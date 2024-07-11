@@ -1,4 +1,4 @@
-const BLOG = {
+export default BLOG = {
   title: 'Titania Research',
   author: 'Titania Research',
   email: 'banri.yanahama@gmail.com',
@@ -6,7 +6,6 @@ const BLOG = {
   description: 'Titania Research',
   timezone: 'Asia/Tokyo', // Your Notion posts' date will be interpreted as this timezone. See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'light', // ['light', 'dark', 'auto'],
-  font: 'sans-serif', // ['sans-serif', 'serif']
   lightBackground: '#ffffff', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#18181B', // use hex value, don't forget '#'
   since: 2024, // If leave this empty, current year will be used.
@@ -51,6 +50,3 @@ const BLOG = {
     },
   },
 };
-
-// export default BLOG
-module.exports = BLOG;

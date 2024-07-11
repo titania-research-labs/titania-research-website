@@ -38,16 +38,9 @@ export default function Header({ navBarTitle, isFullWidth }) {
   const BLOG = useConfig();
 
   // Favicon
-
   const resolveFavicon = fallback => !fallback && '/favicon.png';
   const [favicon, _setFavicon] = useState(resolveFavicon());
   const setFavicon = fallback => _setFavicon(resolveFavicon(fallback));
-
-  // useEffect(
-  //   () => setFavicon(),
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  //   [dark],
-  // );
 
   const useSticky = !BLOG.autoCollapsedNavBar;
   const navRef = useRef(/** @type {HTMLDivElement} */ undefined);
@@ -104,12 +97,10 @@ export default function Header({ navBarTitle, isFullWidth }) {
             className='fill-black dark:fill-white'
           />
         </svg>
-        <div className='flex items-center'>
-        <Image src={favicon} width={19} height={19} alt='fairy' onError={() => setFavicon(true)} />
-        <Link href='/' aria-label={BLOG.title}>
-            <HeaderName ref={titleRef} siteTitle={BLOG.title} postTitle={navBarTitle} onClick={handleClickHeader} />
-          </Link>
-        </div>
+        <Link href='/' aria-label={BLOG.title} className='flex items-center'>
+          <Image src={favicon} width={15} height={15} alt='terminal_icon' onError={() => setFavicon(true)} />
+          <HeaderName ref={titleRef} siteTitle={BLOG.title} postTitle={navBarTitle} onClick={handleClickHeader} />
+        </Link>
         <NavBar />
       </div>
     </>

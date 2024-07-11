@@ -53,7 +53,7 @@ const Container = ({ children, layout, isFullWidth, ...customMeta }) => {
           </>
         )}
       </Head>
-      <div className={`wrapper ${BLOG.font === 'serif' ? 'font-serif' : 'font-sans'}`}>
+      <div className={'wrapper font-arial'}>
         <Header navBarTitle={layout === 'blog' ? meta.title : null} isFullWidth={isFullWidth} />
         <main
           className={cn(
