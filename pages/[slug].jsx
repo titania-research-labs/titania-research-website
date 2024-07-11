@@ -25,7 +25,7 @@ export default function BlogPage({ page, blockMap }) {
       type='article'
       isFullWidth={isFullWidth}
     >
-      <Page page={page} blockMap={blockMap} isFullWidth={isFullWidth} />
+      <Page page={page} blockMap={blockMap} category={'article'} isFullWidth={isFullWidth} />
 
       {/* Back and Top */}
       <div

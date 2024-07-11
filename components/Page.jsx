@@ -16,7 +16,7 @@ import TableOfContents from '@/components/TableOfContents';
  * @prop {object}   blockMap   - Page block data
  * @prop {boolean} [isFullWidth] - Whether in full-width mode
  */
-export default function Page({ page, blockMap, isFullWidth = false }) {
+export default function Page({ page, blockMap, category, isFullWidth}) {
   const { dark } = useTheme();
 
   return (
@@ -54,7 +54,9 @@ export default function Page({ page, blockMap, isFullWidth = false }) {
           )}
         >
           {/* `65px` is the height of expanded nav */}
-          <TableOfContents blockMap={blockMap} className='pt-3 sticky' style={{ top: '65px' }} />
+          {category === 'article' && (
+            <TableOfContents blockMap={blockMap} className='pt-3 sticky' style={{ top: '65px' }} />
+          )}
         </div>
       </div>
     </article>
