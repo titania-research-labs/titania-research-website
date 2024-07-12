@@ -16,7 +16,6 @@ const NavBar = () => {
       to: 'https://scandalous-stick-9ab.notion.site/Titania-Research-Homepage-587cd20f07b14d259fa7d5c8d9646fc9',
       external: true,
     },
-    { id: 3, name: 'Search', to: `/${locale}/search` },
   ];
   return (
     <div className='flex flex-row flex-shrink-0 items-center'>

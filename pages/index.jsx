@@ -13,7 +13,6 @@ export default function IndexPage({ page, blockMap }) {
     <Container
       layout='top'
       title={page.title}
-      description={page.summary}
       slug={page.slug}
       type={category}
       isFullWidth={isFullWidth}

@@ -19,7 +19,6 @@ export default function BlogPage({ page, blockMap }) {
     <Container
       layout='blog'
       title={page.title}
-      description={page.summary}
       slug={page.slug}
       // date={new Date(page.publishedAt).toISOString()}
       type='article'
