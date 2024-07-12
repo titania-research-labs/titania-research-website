@@ -1,28 +1,8 @@
 import { getAllPages, getAllTagsFromPosts } from '@/lib/notion';
-import Container from '@/components/Container';
-import Tags from '@/components/Tags';
-import BlogPostLink from '@/components/BlogPostLink';
+import SearchLayout from '@/layouts/search';
 
 export default function Tag({ tags, posts, currentTag }) {
-  let filteredBlogPosts = [];
-
-  filteredBlogPosts = posts.filter(post => {
-    const tagContent = post.tags ? post.tags.join(' ') : '';
-    const searchContent = post.title + tagContent;
-    return searchContent.toLowerCase();
-  });
-
-  return (
-    <Container>
-      <Tags tags={tags} currentTag={currentTag} />
-      <div className='article-container my-8'>
-        {!filteredBlogPosts.length && <p className='text-gray-500 dark:text-gray-300'>No posts found.</p>}
-        {filteredBlogPosts.slice(0, 20).map(post => (
-          <BlogPostLink key={post.id} post={post} />
-        ))}
-      </div>
-    </Container>
-  );
+  return <SearchLayout tags={tags} posts={posts} currentTag={currentTag} />;
 }
 
 export async function getStaticProps({ params }) {

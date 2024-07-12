@@ -55,7 +55,6 @@ class MyDocument extends Document {
           )}
 
           <link rel='icon' href='/favicon.png' />
-          <link rel='alternate' type='application/rss+xml' title='RSS 2.0' href='/feed'></link>
           {config.appearance === 'auto' ? (
             <>
               <meta name='theme-color' content={config.lightBackground} media='(prefers-color-scheme: light)' />
