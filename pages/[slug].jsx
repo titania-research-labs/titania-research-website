@@ -35,7 +35,7 @@ export default function BlogPage({ page, blockMap }) {
       >
         <a>
           <button
-            onClick={() => router.push(page.type[0] === 'Post' ? '/writings' : '/')}
+            onClick={() => router.push(page.type[0] === 'Post' ? '/blog' : (page.type[0] === 'Event' ? '/events' : '/'))}
             className='mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100'
           >
             ← Back
