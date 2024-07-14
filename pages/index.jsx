@@ -46,7 +46,7 @@ export default function IndexPage({ page, blockMap }) {
 
 export async function getStaticProps({ locale }) {
   const slug = 'index';
-  const pages = await getAllPages({ allowedTypes: ['Page'] });
+  const pages = await getAllPages({ allowedTypes: ['Page'], allowedStatuses: ['Published'] });
   const page =
     pages.find(page => page.slug === slug && page.lang[0] === locale) || pages.find(page => page.slug === slug);
 

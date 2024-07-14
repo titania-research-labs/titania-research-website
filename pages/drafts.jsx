@@ -7,7 +7,7 @@ import { useConfig } from '@/lib/config';
 import BlogPostLink from '@/components/BlogPostLink';
 
 export async function getStaticProps() {
-  const posts = await getAllPages({ allowedTypes: ['Post'], areDrafts: true });
+  const posts = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'], allowedStatuses: ['Draft'] });
   const postsToShow = posts.slice(0, clientConfig.postsPerPage);
   const totalPosts = posts.length;
   const showNext = totalPosts > clientConfig.postsPerPage;
