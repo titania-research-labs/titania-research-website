@@ -70,7 +70,7 @@ export async function getStaticPaths({ locales }) {
 }
 
 export async function getStaticProps({ params: { slug }, locale }) {
-  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'] });
+  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'], areDrafts: true });
   // Find the current page by slug and locale
   // If the locale is not found, use the default locale
   const page =
