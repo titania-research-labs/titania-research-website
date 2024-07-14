@@ -62,7 +62,7 @@ export default function BlogPage({ page, blockMap }) {
 }
 
 export async function getStaticPaths({ locales }) {
-  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'] });
+  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
   return {
     paths: locales.flatMap(locale => pages.map(page => `${clientConfig.path}/${locale}/${page.slug}`)),
     fallback: true,
@@ -70,7 +70,7 @@ export async function getStaticPaths({ locales }) {
 }
 
 export async function getStaticProps({ params: { slug }, locale }) {
-  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'], areDrafts: true });
+  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
   // Find the current page by slug and locale
   // If the locale is not found, use the default locale
   const page =
