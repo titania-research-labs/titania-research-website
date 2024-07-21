@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
-const Tags = ({ tags, currentTag }) => {
-  if (!tags) return null;
+const Category = ({ allCategories, currentCategory }) => {
+  if (!allCategories) return null;
   return (
-    <div className='tag-container'>
+    <div className='category-container'>
       <ul className='flex max-w-full mt-4 overflow-x-auto'>
-        {Object.keys(tags).map(key => {
-          const selected = key === currentTag;
+        {Object.keys(allCategories).map(key => {
+          const selected = key === currentCategory;
           return (
             <li
               key={key}
@@ -18,10 +18,10 @@ const Tags = ({ tags, currentTag }) => {
             >
               <Link
                 key={key}
-                href={selected ? '/search' : `/tag/${encodeURIComponent(key)}`}
+                href={`/category/${encodeURIComponent(key)}`}
                 className='px-4 py-2 block'
               >
-                {`${key} (${tags[key]})`}
+                {`${key} (${allCategories[key]})`}
               </Link>
             </li>
           );
@@ -31,4 +31,4 @@ const Tags = ({ tags, currentTag }) => {
   );
 };
 
-export default Tags;
+export default Category;

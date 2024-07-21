@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import useTheme from '@/lib/theme';
 import FormattedDate from '@/components/FormattedDate';
-import TagItem from '@/components/TagItem';
+import CategoryItem from '@/components/CategoryItem';
 import NotionRenderer from '@/components/NotionRenderer';
 import TableOfContents from '@/components/TableOfContents';
 
@@ -16,7 +16,7 @@ import TableOfContents from '@/components/TableOfContents';
  * @prop {object}   blockMap   - Page block data
  * @prop {boolean} [isFullWidth] - Whether in full-width mode
  */
-export default function Page({ page, blockMap, category, isFullWidth}) {
+export default function Page({ page, blockMap, type, isFullWidth}) {
   const { dark } = useTheme();
 
   return (
@@ -24,7 +24,7 @@ export default function Page({ page, blockMap, category, isFullWidth}) {
       <h1 className={cn('w-full font-bold text-3xl text-black dark:text-white', { 'max-w-4xl px-4': !isFullWidth })}>
         {page.title}
       </h1>
-      {page.type[0] !== 'Page' && (
+      {page.type !== 'Page' && (
         <nav
           className={cn('w-full flex mt-7 items-start text-gray-500 dark:text-gray-400', {
             'max-w-4xl px-4': !isFullWidth,
@@ -33,11 +33,9 @@ export default function Page({ page, blockMap, category, isFullWidth}) {
           <div className='mr-2 mb-4 md:ml-0'>
             <FormattedDate date={page.date} />
           </div>
-          {page.tags && (
-            <div className='flex flex-nowrap max-w-full overflow-x-auto article-tags'>
-              {page.tags.map(tag => (
-                <TagItem key={tag} tag={tag} />
-              ))}
+          {page.category && (
+            <div className='flex flex-nowrap max-w-full overflow-x-auto article-category'>
+              <CategoryItem key={page.category} category={page.category} />
             </div>
           )}
         </nav>
@@ -54,7 +52,7 @@ export default function Page({ page, blockMap, category, isFullWidth}) {
           )}
         >
           {/* `65px` is the height of expanded nav */}
-          {category === 'article' && (
+          {type === 'post' && (
             <TableOfContents blockMap={blockMap} className='pt-3 sticky' style={{ top: '65px' }} />
           )}
         </div>
@@ -66,5 +64,6 @@ export default function Page({ page, blockMap, category, isFullWidth}) {
 Page.propTypes = {
   page: PropTypes.object.isRequired,
   blockMap: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
   isFullWidth: PropTypes.bool,
 };
