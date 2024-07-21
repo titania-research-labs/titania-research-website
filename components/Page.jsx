@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import useTheme from '@/lib/theme';
 import FormattedDate from '@/components/FormattedDate';
-import TagItem from '@/components/TagItem';
+import CategoryItem from '@/components/CategoryItem';
 import NotionRenderer from '@/components/NotionRenderer';
 import TableOfContents from '@/components/TableOfContents';
 
@@ -34,9 +34,9 @@ export default function Page({ page, blockMap, category, isFullWidth}) {
             <FormattedDate date={page.date} />
           </div>
           {page.tags && (
-            <div className='flex flex-nowrap max-w-full overflow-x-auto article-tags'>
+            <div className='flex flex-nowrap max-w-full overflow-x-auto article-category'>
               {page.tags.map(tag => (
-                <TagItem key={tag} tag={tag} />
+                <CategoryItem key={tag} tag={tag} />
               ))}
             </div>
           )}

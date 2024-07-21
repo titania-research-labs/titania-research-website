@@ -68,15 +68,15 @@ nav {
   line-height: 1.5em;
 }
 
-.article-tags::-webkit-scrollbar {
+.article-category::-webkit-scrollbar {
   width: 0 !important;
 }
 
-.tag-container ul::-webkit-scrollbar {
+.category-container ul::-webkit-scrollbar {
   width: 0 !important;
 }
 
-.tag-container ul {
+.category-container ul {
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
   -moz-user-select: none;
