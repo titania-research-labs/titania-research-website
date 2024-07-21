@@ -8,9 +8,6 @@ import BlogPostLink from '@/components/BlogPostLink';
 
 export default function Blog({ postsToShow, page, showNext }) {
   const { title, description } = useConfig();
-  postsToShow.forEach(post => {
-    console.log("category: ", post.category);
-  });
 
   return (
     <Container title={title} description={description}>
