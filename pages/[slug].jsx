@@ -24,7 +24,7 @@ export default function BlogPage({ page, blockMap }) {
       type='article'
       isFullWidth={isFullWidth}
     >
-      <Page page={page} blockMap={blockMap} category={'article'} isFullWidth={isFullWidth} />
+      <Page page={page} blockMap={blockMap} type={'post'} isFullWidth={isFullWidth} />
 
       {/* Back and Top */}
       <div
@@ -35,7 +35,7 @@ export default function BlogPage({ page, blockMap }) {
       >
         <a>
           <button
-            onClick={() => router.push(page.type[0] === 'Post' ? '/blog' : (page.type[0] === 'Event' ? '/events' : '/'))}
+            onClick={() => router.push(page.type === 'Post' ? '/blog' : (page.type === 'Event' ? '/events' : '/'))}
             className='mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100'
           >
             ← Back

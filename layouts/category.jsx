@@ -7,9 +7,7 @@ const CategoryLayout = ({ allCategories, posts, currentCategory }) => {
   let filteredBlogPosts = [];
   if (posts) {
     filteredBlogPosts = posts.filter(post => {
-      const tagContent = post.tags ? post.tags.join(' ') : '';
-      const searchContent = post.title + tagContent;
-      return searchContent.toLowerCase();
+      return (post.title + post.category).toLowerCase();
     });
   }
 
