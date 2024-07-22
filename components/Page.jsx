@@ -33,7 +33,7 @@ export default function Page({ page, blockMap, type, isFullWidth}) {
           <div className='mr-2 mb-4 md:ml-0'>
             <FormattedDate date={page.date} />
           </div>
-          {page.category && (
+          {page.category && page.type === 'Post' && (
             <div className='flex flex-nowrap max-w-full overflow-x-auto article-category'>
               <CategoryItem key={page.category} category={page.category} />
             </div>
