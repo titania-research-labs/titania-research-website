@@ -10,7 +10,7 @@ const BLOG = {
   darkBackground: '#18181B', // use hex value, don't forget '#'
   since: 2024, // If leave this empty, current year will be used.
   path: '', // leave this empty unless you want to deploy Nobelium in a folder
-  postsPerPage: 7,
+  postsPerPage: 100,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: 'https://og-image-craigary.vercel.app', // The link to generate OG image, don't end with a slash
   seo: {
