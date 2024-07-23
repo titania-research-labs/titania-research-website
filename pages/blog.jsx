@@ -14,7 +14,7 @@ export default function Blog({ postsToShow, page, showNext }) {
       {postsToShow.map(post => (
         <BlogPostLink key={post.id} post={post} />
       ))}
-      {showNext && <Pagination page={page} showNext={showNext} />}
+      {showNext && <Pagination page={page} showNext={showNext} blogOrEvents={'blog'} />}
     </Container>
   );
 }

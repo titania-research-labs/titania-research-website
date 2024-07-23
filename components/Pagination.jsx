@@ -1,8 +1,6 @@
 import Link from 'next/link';
-import { useConfig } from '@/lib/config';
 
-const Pagination = ({ page, showNext }) => {
-  const BLOG = useConfig();
+const Pagination = ({ page, showNext, blogOrEvents }) => {
   const currentPage = +page;
   let additionalClassName = 'justify-between';
   if (currentPage === 1 && showNext) additionalClassName = 'justify-end';
@@ -10,7 +8,7 @@ const Pagination = ({ page, showNext }) => {
   return (
     <div className={`flex font-medium text-black dark:text-gray-100 ${additionalClassName}`}>
       {currentPage !== 1 && (
-        <Link href={currentPage - 1 === 1 ? '/' : `/page/${currentPage - 1}`}>
+        <Link href={currentPage - 1 === 1 ? `/${blogOrEvents}` : `/page/${currentPage - 1}`}>
           <button rel='prev' className='block cursor-pointer'>
             ← Prev
           </button>
