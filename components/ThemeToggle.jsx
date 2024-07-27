@@ -1,23 +1,31 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
+import { Moon, Sun } from 'lucide-react';
 
-export default function ThemeToggle() {
-  const router = useRouter();
-  const { locale: activeLocale } = router;
+const DarkModeToggle = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(isDarkMode);
+    document.documentElement.classList.toggle('dark', isDarkMode);
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    localStorage.setItem('darkMode', newDarkMode);
+    document.documentElement.classList.toggle('dark', newDarkMode);
+  };
 
   return (
-    <div className='flex flex-row text-black dark:text-gray-300 text-xs'>
-      <div>
-        <Link href={router.asPath} locale='en' className={`${activeLocale === 'en' ? 'active font-bold' : ''}`}>
-          en
-        </Link>
-      </div>
-      <div className='px-0.5 text-[8px]'>/</div>
-      <div>
-        <Link href={router.asPath} locale='ja' className={`${activeLocale === 'ja' ? 'active font-bold' : ''}`}>
-          ja
-        </Link>
-      </div>
-    </div>
+    <button
+      onClick={toggleDarkMode}
+      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+      aria-label="Toggle dark mode"
+    >
+      {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+    </button>
   );
-}
+};
+
+export default DarkModeToggle;
