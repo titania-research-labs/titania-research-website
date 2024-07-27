@@ -28,4 +28,4 @@ export default function NavBar() {
       <ThemeToggle />
     </div>
   );
-};
+}
