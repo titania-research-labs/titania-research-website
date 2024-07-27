@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function LanguageSwitcher() {
+export default function ThemeToggle() {
   const router = useRouter();
   const { locale: activeLocale } = router;
 
