@@ -2,36 +2,22 @@ import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useConfig } from '@/lib/config';
-import { useRouter } from 'next/router';
-import LanguageSwitcher from './LanguageSwitcher';
+import NavBar from './NavBar';
 
-const NavBar = () => {
-  const { locale } = useRouter();
-  const links = [
-    { id: 0, name: 'Blog', to: `/${locale}/blog` },
-    { id: 1, name: 'Events', to: `/${locale}/events` },
-    {
-      id: 2,
-      name: 'About',
-      to: 'https://scandalous-stick-9ab.notion.site/Titania-Research-Homepage-587cd20f07b14d259fa7d5c8d9646fc9',
-      external: true,
-    },
-  ];
+const HeaderName = forwardRef(function HeaderName({ siteTitle, postTitle, onClick }, ref) {
   return (
-    <div className='flex flex-row flex-shrink-0 items-center'>
-      <ul className='flex flex-row pr-4'>
-        {links.map(link => (
-          <li key={link.id} className='block ml-4 text-black dark:text-gray-50 nav'>
-            <Link href={link.to} target={link.external ? '_blank' : null}>
-              {link.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <LanguageSwitcher />
-    </div>
+    <p
+      ref={ref}
+      className='header-name ml-2 font-medium text-gray-600 dark:text-gray-300 capture-pointer-events grid-rows-1 grid-cols-1 items-center'
+      onClick={onClick}
+    >
+      {postTitle && <span className='post-title row-start-1 col-start-1'>{postTitle}</span>}
+      <span className='row-start-1 col-start-1'>
+        <span className='site-title'>{siteTitle}</span>
+      </span>
+    </p>
   );
-};
+});
 
 export default function Header({ navBarTitle, isFullWidth }) {
   const BLOG = useConfig();
@@ -80,7 +66,7 @@ export default function Header({ navBarTitle, isFullWidth }) {
     <>
       <div className='observer-element h-4 md:h-12' ref={sentinelRef}></div>
       <div
-        className={`sticky-nav group m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-white dark:bg-gray-900 ${
+        className={`sticky-nav group m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-white dark:bg-night ${
           isFullWidth ? 'px-4 md:px-24' : 'max-w-5xl px-4'
         }`}
         id='sticky-nav'
@@ -105,18 +91,3 @@ export default function Header({ navBarTitle, isFullWidth }) {
     </>
   );
 }
-
-const HeaderName = forwardRef(function HeaderName({ siteTitle, postTitle, onClick }, ref) {
-  return (
-    <p
-      ref={ref}
-      className='header-name ml-2 font-medium text-gray-600 dark:text-gray-300 capture-pointer-events grid-rows-1 grid-cols-1 items-center'
-      onClick={onClick}
-    >
-      {postTitle && <span className='post-title row-start-1 col-start-1'>{postTitle}</span>}
-      <span className='row-start-1 col-start-1'>
-        <span className='site-title'>{siteTitle}</span>
-      </span>
-    </p>
-  );
-});

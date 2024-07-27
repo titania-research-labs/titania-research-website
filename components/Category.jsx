@@ -16,11 +16,7 @@ const Category = ({ allCategories, currentCategory }) => {
                   : 'bg-gray-100 border-gray-100 text-gray-400 dark:bg-night dark:border-gray-800'
               }`}
             >
-              <Link
-                key={key}
-                href={`/category/${encodeURIComponent(key)}`}
-                className='px-4 py-2 block'
-              >
+              <Link key={key} href={`/category/${encodeURIComponent(key)}`} className='px-4 py-2 block'>
                 {`${key} (${allCategories[key]})`}
               </Link>
             </li>

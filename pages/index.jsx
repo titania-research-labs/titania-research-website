@@ -10,13 +10,7 @@ export default function IndexPage({ page, blockMap }) {
   const category = 'top';
 
   return (
-    <Container
-      layout='top'
-      title={page.title}
-      slug={page.slug}
-      type={category}
-      isFullWidth={isFullWidth}
-    >
+    <Container layout='top' title={page.title} slug={page.slug} type={category} isFullWidth={isFullWidth}>
       <Page page={page} blockMap={blockMap} category={category} isFullWidth={isFullWidth} />
 
       {/* Top */}
