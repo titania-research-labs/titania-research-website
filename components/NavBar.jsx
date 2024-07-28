@@ -18,7 +18,7 @@ export default function NavBar() {
       name: 'Contact',
       to: 'https://noteforms.com/forms/titania-research-website-form-hhsvja',
       external: true,
-    }
+    },
   ];
   return (
     <div className='flex flex-row flex-shrink-0 items-center'>
