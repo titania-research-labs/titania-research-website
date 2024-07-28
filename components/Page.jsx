@@ -64,6 +64,6 @@ export default function Page({ page, blockMap, category, isFullWidth }) {
 Page.propTypes = {
   page: PropTypes.object.isRequired,
   blockMap: PropTypes.object.isRequired,
-  type: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   isFullWidth: PropTypes.bool,
 };
