@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import ThemeToggle from './ThemeToggle';
+// import ThemeToggle from './ThemeToggle';
 
 export default function NavBar() {
   const { locale } = useRouter();
@@ -11,6 +11,12 @@ export default function NavBar() {
       id: 2,
       name: 'About',
       to: 'https://scandalous-stick-9ab.notion.site/Titania-Research-Homepage-587cd20f07b14d259fa7d5c8d9646fc9',
+      external: true,
+    },
+    {
+      id: 3,
+      name: 'Contact',
+      to: 'https://noteforms.com/forms/titania-research-website-form-hhsvja',
       external: true,
     },
   ];
@@ -25,7 +31,7 @@ export default function NavBar() {
           </li>
         ))}
       </ul>
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
     </div>
   );
 }
