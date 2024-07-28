@@ -36,7 +36,7 @@ export default function BlogPage({ page, blockMap }) {
         <a>
           <button
             onClick={() => router.push(page.type === 'Post' ? '/blog' : page.type === 'Event' ? '/events' : '/')}
-            className='mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100'
+            className='mt-2 cursor-pointer hover:text-gray-900 dark:hover:text-gray-100'
           >
             ← Back
           </button>
@@ -49,7 +49,7 @@ export default function BlogPage({ page, blockMap }) {
                 behavior: 'smooth',
               })
             }
-            className='mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100'
+            className='mt-2 cursor-pointer hover:text-gray-900 dark:hover:text-gray-100'
           >
             ↑ Top
           </button>

@@ -8,7 +8,7 @@ const HeaderName = forwardRef(function HeaderName({ siteTitle, postTitle, onClic
   return (
     <p
       ref={ref}
-      className='header-name ml-2 font-medium text-gray-600 dark:text-gray-300 capture-pointer-events grid-rows-1 grid-cols-1 items-center'
+      className='header-name ml-2 font-medium text-gray-700 dark:text-gray-300 capture-pointer-events grid-rows-1 grid-cols-1 items-center'
       onClick={onClick}
     >
       {postTitle && <span className='post-title row-start-1 col-start-1'>{postTitle}</span>}
