@@ -52,7 +52,9 @@ export default function Page({ page, blockMap, category, isFullWidth }) {
           )}
         >
           {/* `65px` is the height of expanded nav */}
-          {['post', 'event'].includes(category) && <TableOfContents blockMap={blockMap} className='pt-3 sticky' style={{ top: '65px' }} />}
+          {['post', 'event'].includes(category) && (
+            <TableOfContents blockMap={blockMap} className='pt-3 sticky' style={{ top: '65px' }} />
+          )}
         </div>
       </div>
     </article>
