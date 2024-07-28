@@ -28,7 +28,7 @@ export default function IndexPage({ page, blockMap }) {
                 behavior: 'smooth',
               })
             }
-            className='mt-2 cursor-pointer hover:text-black dark:hover:text-gray-100'
+            className='mt-2 cursor-pointer hover:text-gray-900 dark:hover:text-gray-100'
           >
             ↑ Top
           </button>
