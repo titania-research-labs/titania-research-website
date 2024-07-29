@@ -1,8 +1,4 @@
 module.exports = {
-  i18n: {
-    locales: ['en', 'ja'],
-    defaultLocale: 'en',
-  },
   pageExtensions: ['jsx', 'js'],
   eslint: {
     // dirs: ['components', 'layouts', 'lib', 'pages']

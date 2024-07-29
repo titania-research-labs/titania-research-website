@@ -1,12 +1,9 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-// import ThemeToggle from './ThemeToggle';
 
 export default function NavBar() {
-  const { locale } = useRouter();
   const links = [
-    { id: 0, name: 'Blog', to: `/${locale}/blog` },
-    { id: 1, name: 'Events', to: `/${locale}/events` },
+    { id: 0, name: 'Blog', to: '/blog' },
+    { id: 1, name: 'Events', to: '/events' },
     {
       id: 2,
       name: 'About',
@@ -31,7 +28,6 @@ export default function NavBar() {
           </li>
         ))}
       </ul>
-      {/* <ThemeToggle /> */}
     </div>
   );
 }

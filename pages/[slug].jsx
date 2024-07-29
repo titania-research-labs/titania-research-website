@@ -14,7 +14,7 @@ export default function BlogPage({ page, blockMap }) {
   if (router.isFallback) return null;
 
   const isFullWidth = page.isFullWidth ?? false;
-  const category = page.type === 'Post' ? 'post' : page.type === 'Event' ? 'event' : 'page';
+  const category = page.type === 'Post' ? 'post' : page.type === 'Event' ? 'event' : '';
 
   return (
     <Container
@@ -62,20 +62,18 @@ export default function BlogPage({ page, blockMap }) {
   );
 }
 
-export async function getStaticPaths({ locales }) {
-  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
+export async function getStaticPaths() {
+  const pages = await getAllPages({ allowedTypes: ['Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
   return {
-    paths: locales.flatMap(locale => pages.map(page => `${clientConfig.path}/${locale}/${page.slug}`)),
+    paths: pages.map(page => `${clientConfig.path}/${page.slug}`),
     fallback: true,
   };
 }
 
-export async function getStaticProps({ params: { slug }, locale }) {
-  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
-  // Find the current page by slug and locale
-  // If the locale is not found, use the default locale
-  const page =
-    pages.find(page => page.slug === slug && page.lang[0] === locale) || pages.find(page => page.slug === slug);
+export async function getStaticProps({ params: { slug } }) {
+  const pages = await getAllPages({ allowedTypes: ['Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
+  // Find the current page by slug
+  const page = pages.find(page => page.slug === slug);
 
   if (!page) return { notFound: true };
 
