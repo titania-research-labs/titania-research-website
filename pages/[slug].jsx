@@ -14,7 +14,7 @@ export default function BlogPage({ page, blockMap }) {
   if (router.isFallback) return null;
 
   const isFullWidth = page.isFullWidth ?? false;
-  const category = page.type === 'Post' ? 'post' : page.type === 'Event' ? 'event' : 'page';
+  const category = page.type === 'Post' ? 'post' : page.type === 'Event' ? 'event' : '';
 
   return (
     <Container
@@ -63,7 +63,7 @@ export default function BlogPage({ page, blockMap }) {
 }
 
 export async function getStaticPaths() {
-  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
+  const pages = await getAllPages({ allowedTypes: ['Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
   return {
     paths: pages.map(page => `${clientConfig.path}/${page.slug}`),
     fallback: true,
@@ -71,7 +71,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const pages = await getAllPages({ allowedTypes: ['Page', 'Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
+  const pages = await getAllPages({ allowedTypes: ['Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
   // Find the current page by slug
   const page = pages.find(page => page.slug === slug);
 

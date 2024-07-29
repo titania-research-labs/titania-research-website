@@ -24,7 +24,7 @@ export default function Page({ page, blockMap, category, isFullWidth }) {
       <h1 className={cn('w-full font-bold text-3xl text-gray-900 dark:text-white', { 'max-w-4xl px-4': !isFullWidth })}>
         {page.title}
       </h1>
-      {page.type !== 'Page' && (
+      {page.type !== 'Top' && (
         <nav
           className={cn('w-full flex mt-7 items-start text-gray-500 dark:text-gray-400', {
             'max-w-4xl px-4': !isFullWidth,
