@@ -1,7 +1,7 @@
 import { createElement as h } from 'react';
 import dynamic from 'next/dynamic';
-import { NotionRenderer as Renderer } from 'react-notion-x';
-import { getTextContent } from 'notion-utils';
+import { NotionRenderer as Renderer } from 'react-notion-xxx';
+import { getTextContent } from '@banr1/notion-utils';
 import Toggle from '@/components/notion-blocks/Toggle';
 
 // Lazy-load some heavy components & override the renderers of some block types
@@ -25,7 +25,7 @@ const components = {
         default:
           return h(
             dynamic(() => {
-              return import('react-notion-x/build/third-party/code').then(async module => {
+              return import('react-notion-xxx/build/third-party/code').then(async module => {
                 // Additional prismjs syntax
                 await Promise.all([
                   import('prismjs/components/prism-markup-templating'),
@@ -70,16 +70,16 @@ const components = {
   }),
   // Database block
   Collection: dynamic(() => {
-    return import('react-notion-x/build/third-party/collection').then(module => module.Collection);
+    return import('react-notion-xxx/build/third-party/collection').then(module => module.Collection);
   }),
   // Equation block & inline variant
   Equation: dynamic(() => {
-    return import('react-notion-x/build/third-party/equation').then(module => module.Equation);
+    return import('react-notion-xxx/build/third-party/equation').then(module => module.Equation);
   }),
   // PDF (Embed block)
   Pdf: dynamic(
     () => {
-      return import('react-notion-x/build/third-party/pdf').then(module => module.Pdf);
+      return import('react-notion-xxx/build/third-party/pdf').then(module => module.Pdf);
     },
     { ssr: false },
   ),
@@ -103,9 +103,9 @@ const mapPageUrl = id => `https://www.notion.so/${id.replace(/-/g, '')}`;
 /**
  * Notion page renderer
  *
- * A wrapper of react-notion-x/NotionRenderer with predefined `components` and `mapPageUrl`
+ * A wrapper of react-notion-xxx/NotionRenderer with predefined `components` and `mapPageUrl`
  *
- * @param props - Anything that react-notion-x/NotionRenderer supports
+ * @param props - Anything that react-notion-xxx/NotionRenderer supports
  */
 export default function NotionRenderer(props) {
   const font = ['Arial'];

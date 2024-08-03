@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { getPageTableOfContents } from 'notion-utils';
+import { getPageTableOfContents } from '@banr1/notion-utils';
 import cn from 'classnames';
 
 export default function TableOfContents({ blockMap, className, style }) {

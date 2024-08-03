@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import mermaid from 'mermaid';
 import useTheme from '@/lib/theme';
-import { getTextContent } from 'notion-utils';
+import { getTextContent } from '@banr1/notion-utils';
 
 export default function Mermaid({ block }) {
   const { dark } = useTheme();

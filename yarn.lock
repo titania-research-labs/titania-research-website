@@ -21,13 +21,13 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@banr1/notion-client@^7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@banr1/notion-client/-/notion-client-7.0.3.tgz#e3ce2d4c730897296422a0fd8ae92bf62655d311"
-  integrity sha512-EU7kukfNCvmrOOocQfoHI/kyCsz3i4UhbEWRJcukDnPOeGIGjt55lFYqPvzu1jGl+mKan/cczkRLPJPaY4aMgw==
+"@banr1/notion-client@^7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@banr1/notion-client/-/notion-client-7.0.4.tgz#bfea952cd0108efde0236e73668cdf58d4c45e90"
+  integrity sha512-/04/fJmZ/jr4Sy9AjLeyKnrUrgeSE7cXs/YBugAlN+t5hITGxt6nbypaCKXOhfR4aljkJcssUaOS3X71p4MiqA==
   dependencies:
     "@banr1/notion-types" "^7.0.3"
-    "@banr1/notion-utils" "^7.0.3"
+    "@banr1/notion-utils" "^7.0.4"
     got "^11.8.1"
     p-map "^5.3.0"
 
@@ -36,10 +36,10 @@
   resolved "https://registry.yarnpkg.com/@banr1/notion-types/-/notion-types-7.0.3.tgz#2317f2f5abafd71c9765d61b2c8460555691c706"
   integrity sha512-3ND8p/MSihExG0SmB67fXS6f/i9Ow1La1hQR2MQgxiKjSyitoxcZTCjKXbhg8zhtUXdD6XPBkxfBP3p6n2kX6Q==
 
-"@banr1/notion-utils@^7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@banr1/notion-utils/-/notion-utils-7.0.3.tgz#5fd34efe55be12e4fe2e64f23bf38868a32fbc0c"
-  integrity sha512-r6iq2j571b/IaHTakRyeJIkCYR+gw6zTeycj0eek4PgL7qh0R4tqATxoPSJEAVmL88vkH+bQY9KoQui/FoygpQ==
+"@banr1/notion-utils@^7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@banr1/notion-utils/-/notion-utils-7.0.4.tgz#117710dc500fa757884ce3a4652868820755f098"
+  integrity sha512-6nurCQ/YmCkj2g6UACTqDdhIB99GqLuZlg/YlPHkRRl0RLwieLBXmsn8bcQiNg95qyV558DeOX1PqINH2oETBg==
   dependencies:
     "@banr1/notion-types" "^7.0.3"
     is-url-superb "^6.1.0"
@@ -3866,13 +3866,13 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-xxx@^7.0.3:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/react-notion-xxx/-/react-notion-xxx-7.0.3.tgz#eb5c59c0a76f902aed8c08fc301f430d741dd854"
-  integrity sha512-TF68p1PAi2dSBvvgSHd//lnQIuE1tDwGyyTzDJe/3vNJcOp/k85T4Yq5Fga3zB7mE2J/Ji9WDdAL0ShrbQ7PEw==
+react-notion-xxx@^7.0.5:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/react-notion-xxx/-/react-notion-xxx-7.0.5.tgz#f5e97e1c823bfe749a4aafbf301b4b2ccb580258"
+  integrity sha512-lqY6qj4sLSJUJ8yTc4ND43FdTBv0h0qPlmLTgdjv2LZ0Cq8/kzzfr9uXwU0gItxAJsOJFtrJcSFmkUEXOaO0mA==
   dependencies:
     "@banr1/notion-types" "^7.0.3"
-    "@banr1/notion-utils" "^7.0.3"
+    "@banr1/notion-utils" "^7.0.4"
     "@fisch0920/medium-zoom" "^1.0.7"
     "@matejmazur/react-katex" "^3.1.3"
     katex "^0.15.3"
