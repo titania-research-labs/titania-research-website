@@ -14,7 +14,6 @@ export default function BlogPage({ page, blockMap }) {
   if (router.isFallback) return null;
 
   const isFullWidth = page.isFullWidth ?? false;
-  const category = page.type === 'Post' ? 'post' : page.type === 'Event' ? 'event' : '';
 
   return (
     <Container
@@ -25,7 +24,7 @@ export default function BlogPage({ page, blockMap }) {
       type='article'
       isFullWidth={isFullWidth}
     >
-      <Page page={page} blockMap={blockMap} category={category} isFullWidth={isFullWidth} />
+      <Page page={page} blockMap={blockMap} isFullWidth={isFullWidth} />
 
       {/* Back and Top */}
       <div

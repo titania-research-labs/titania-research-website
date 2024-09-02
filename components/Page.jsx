@@ -16,7 +16,7 @@ import TableOfContents from '@/components/TableOfContents';
  * @prop {object}   blockMap   - Page block data
  * @prop {boolean} [isFullWidth] - Whether in full-width mode
  */
-export default function Page({ page, blockMap, category, isFullWidth }) {
+export default function Page({ page, blockMap, isFullWidth }) {
   const { dark } = useTheme();
 
   return (
@@ -24,7 +24,7 @@ export default function Page({ page, blockMap, category, isFullWidth }) {
       <h1 className={cn('w-full font-bold text-3xl text-gray-900 dark:text-white', { 'max-w-4xl px-4': !isFullWidth })}>
         {page.title}
       </h1>
-      {page.type !== 'Top' && (
+      {!['Top', 'About'].includes(page.type) && (
         <nav
           className={cn('w-full flex mt-7 items-start text-gray-500 dark:text-gray-400', {
             'max-w-4xl px-4': !isFullWidth,
@@ -52,7 +52,7 @@ export default function Page({ page, blockMap, category, isFullWidth }) {
           )}
         >
           {/* `65px` is the height of expanded nav */}
-          {['post', 'event'].includes(category) && (
+          {['Post', 'Event'].includes(page.type) && (
             <TableOfContents blockMap={blockMap} className='pt-3 sticky' style={{ top: '65px' }} />
           )}
         </div>

@@ -7,11 +7,10 @@ export default function IndexPage({ page, blockMap }) {
   if (!page) return null;
 
   const isFullWidth = page.isFullWidth ?? false;
-  const category = 'top';
 
   return (
-    <Container layout='top' title={page.title} slug={page.slug} category={category} isFullWidth={isFullWidth}>
-      <Page page={page} blockMap={blockMap} category={category} isFullWidth={isFullWidth} />
+    <Container layout='top' title={page.title} slug={page.slug} isFullWidth={isFullWidth}>
+      <Page page={page} blockMap={blockMap} isFullWidth={isFullWidth} />
 
       {/* Top */}
       <div
