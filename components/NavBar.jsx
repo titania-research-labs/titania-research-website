@@ -4,12 +4,7 @@ export default function NavBar() {
   const links = [
     { id: 0, name: 'Blog', to: '/blog' },
     { id: 1, name: 'Events', to: '/events' },
-    {
-      id: 2,
-      name: 'About',
-      to: 'https://scandalous-stick-9ab.notion.site/Titania-Research-Homepage-587cd20f07b14d259fa7d5c8d9646fc9',
-      external: true,
-    },
+    { id: 2, name: 'About', to: '/about' },
     {
       id: 3,
       name: 'Contact',

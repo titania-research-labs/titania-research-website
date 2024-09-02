@@ -9,7 +9,7 @@ export default function IndexPage({ page, blockMap }) {
   const isFullWidth = page.isFullWidth ?? false;
 
   return (
-    <Container layout='top' title={page.title} slug={page.slug} isFullWidth={isFullWidth}>
+    <Container layout='about' title={page.title} slug={page.slug} isFullWidth={isFullWidth}>
       <Page page={page} blockMap={blockMap} isFullWidth={isFullWidth} />
 
       {/* Top */}
@@ -38,8 +38,8 @@ export default function IndexPage({ page, blockMap }) {
 }
 
 export async function getStaticProps() {
-  const slug = 'index';
-  const pages = await getAllPages({ allowedTypes: ['Top'], allowedStatuses: ['Published'] });
+  const slug = 'about';
+  const pages = await getAllPages({ allowedTypes: ['About'], allowedStatuses: ['Published'] });
   const page = pages.find(page => page.slug === slug);
 
   if (!page) return { notFound: true };
