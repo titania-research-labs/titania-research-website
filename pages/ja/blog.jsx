@@ -20,7 +20,7 @@ export default function Blog({ postsToShow, page, showNext }) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPages({ allowedTypes: ['Post'], allowedStatuses: ['Published'] });
+  const posts = await getAllPages({ allowedTypes: ['Post'], allowedStatuses: ['Published'], allowedLang: 'ja' });
   const postsToShow = posts.slice(0, clientConfig.postsPerPage);
   const totalPosts = posts.length;
   const showNext = totalPosts > clientConfig.postsPerPage;

@@ -39,7 +39,7 @@ export default function IndexPage({ page, blockMap }) {
 
 export async function getStaticProps() {
   const slug = 'partners';
-  const pages = await getAllPages({ allowedTypes: ['Single'], allowedStatuses: ['Published'] });
+  const pages = await getAllPages({ allowedTypes: ['Single'], allowedStatuses: ['Published'], allowedLang: 'ja' });
   const page = pages.find(page => page.slug === slug);
 
   if (!page) return { notFound: true };

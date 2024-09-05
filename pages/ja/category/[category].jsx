@@ -22,7 +22,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPages({ allowedTypes: ['Post'], allowedStatuses: ['Published'] });
+  const posts = await getAllPages({ allowedTypes: ['Post'], allowedStatuses: ['Published'], allowedLang: 'ja' });
   const allCategories = getAllCategoriesFromPosts(posts);
   return {
     paths: Object.keys(allCategories).map(category => ({ params: { category } })),
