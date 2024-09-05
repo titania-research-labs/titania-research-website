@@ -17,17 +17,17 @@ NEXT_PUBLIC_BLOG_URL=abc...
 Start the development server:
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 Build the project:
 
 ```bash
-yarn build
+pnpm build
 ```
 
 Start the production server:
 
 ```bash
-yarn start
+pnpm start
 ```
