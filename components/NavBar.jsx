@@ -1,4 +1,5 @@
 import useIsJapanese from '@/lib/useIsJapanese';
+import LangSwitcher from './LangSwitcher';
 import Link from 'next/link';
 
 export default function NavBar() {
@@ -26,6 +27,7 @@ export default function NavBar() {
             </Link>
           </li>
         ))}
+        <LangSwitcher />
       </ul>
     </div>
   );

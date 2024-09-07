@@ -22,18 +22,19 @@ const LangSwitcher = () => {
   };
 
   return (
-    <div className='lang-switcher flex space-x-2 text-[10px] text-gray-500'>
+    <div className='lang-switcher flex space-x-2 text-[10px] text-gray-500 ml-6 items-center'>
       <button
         className={`lang-switcher-button ${isJapanese && 'active'}`}
         onClick={() => switchLang(false)}
       >
-        English
+        EN
       </button>
+      <div>/</div>
       <button
         className={`lang-switcher-button ${!isJapanese && 'active'}`}
         onClick={() => switchLang(true)}
       >
-        日本語
+        JA
       </button>
     </div>
   );
