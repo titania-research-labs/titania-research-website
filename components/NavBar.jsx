@@ -1,5 +1,6 @@
 import useIsJapanese from '@/lib/useIsJapanese';
 import Link from 'next/link';
+import LangSwitcher from './LangSwitcher';
 
 export default function NavBar() {
   const isJapanese = useIsJapanese();
@@ -27,6 +28,7 @@ export default function NavBar() {
           </li>
         ))}
       </ul>
+      <LangSwitcher />
     </div>
   );
 }

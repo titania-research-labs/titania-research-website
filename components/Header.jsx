@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useConfig } from '@/lib/config';
 import NavBar from './NavBar';
-import LangSwitcher from './LangSwitcher';
 import useIsJapanese from '@/lib/useIsJapanese';
 
 const HeaderName = forwardRef(function HeaderName({ siteTitle, postTitle, onClick }, ref) {
@@ -91,7 +90,6 @@ export default function Header({ navBarTitle, isFullWidth }) {
           <HeaderName ref={titleRef} siteTitle={BLOG.title} postTitle={navBarTitle} onClick={handleClickHeader} />
         </Link>
         <NavBar />
-        <LangSwitcher />
       </div>
     </>
   );
