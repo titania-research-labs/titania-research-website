@@ -5,8 +5,6 @@ const LangSwitcher = () => {
   const router = useRouter();
   const [isJapanese, setIsJapanese] = React.useState(false);
 
-  console.log('isJapanese', isJapanese);
-
   const switchLang = (toJapanese) => {
     setIsJapanese(!toJapanese);
 
