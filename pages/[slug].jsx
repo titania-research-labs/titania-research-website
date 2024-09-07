@@ -1,5 +1,3 @@
-import { clientConfig } from '@/lib/server/config';
-
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 import { getAllPages, getPageBlocks } from '@/lib/notion';
@@ -64,7 +62,7 @@ export default function BlogPage({ page, blockMap }) {
 export async function getStaticPaths() {
   const pages = await getAllPages({ allowedTypes: ['Post', 'Event'], allowedStatuses: ['Published', 'Draft'] });
   return {
-    paths: pages.map(page => `${clientConfig.path}/${page.slug}`),
+    paths: pages.map(page => `/${page.slug}`),
     fallback: true,
   };
 }
