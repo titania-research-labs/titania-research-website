@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useConfig } from '@/lib/config';
 import NavBar from './NavBar';
+import LangSwitcher from './LangSwitcher';
+import useIsJapanese from '@/lib/useIsJapanese';
 
 const HeaderName = forwardRef(function HeaderName({ siteTitle, postTitle, onClick }, ref) {
   return (
@@ -26,8 +28,8 @@ export default function Header({ navBarTitle, isFullWidth }) {
   const resolveFavicon = fallback => !fallback && '/favicon.png';
   const [favicon, _setFavicon] = useState(resolveFavicon());
   const setFavicon = fallback => _setFavicon(resolveFavicon(fallback));
-  const [isJa, setIsJa] = useState(true);
-  const prefix = isJa ? '/ja' : '';
+  const [isJapanese] = useIsJapanese();
+  const prefix = isJapanese ? '/ja' : '';
 
   const useSticky = !BLOG.autoCollapsedNavBar;
   const navRef = useRef(/** @type {HTMLDivElement} */ undefined);
@@ -88,7 +90,8 @@ export default function Header({ navBarTitle, isFullWidth }) {
           <Image src={favicon} width={15} height={15} alt='terminal_icon' onError={() => setFavicon(true)} />
           <HeaderName ref={titleRef} siteTitle={BLOG.title} postTitle={navBarTitle} onClick={handleClickHeader} />
         </Link>
-        <NavBar prefix={prefix} />
+        <NavBar />
+        <LangSwitcher />
       </div>
     </>
   );
