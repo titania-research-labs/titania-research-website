@@ -11,7 +11,7 @@ export default function Drafts({ postsToShow }) {
   return (
     <Container title={title} description={description}>
       {postsToShow.map(post => (
-        <BlogPostLink key={post.id} post={post} />
+        <BlogPostLink key={post.id} post={post} isJa={true} />
       ))}
     </Container>
   );

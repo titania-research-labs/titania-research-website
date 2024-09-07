@@ -26,6 +26,8 @@ export default function Header({ navBarTitle, isFullWidth }) {
   const resolveFavicon = fallback => !fallback && '/favicon.png';
   const [favicon, _setFavicon] = useState(resolveFavicon());
   const setFavicon = fallback => _setFavicon(resolveFavicon(fallback));
+  const [isJa, setIsJa] = useState(true);
+  const prefix = isJa ? '/ja' : '';
 
   const useSticky = !BLOG.autoCollapsedNavBar;
   const navRef = useRef(/** @type {HTMLDivElement} */ undefined);
@@ -82,11 +84,11 @@ export default function Header({ navBarTitle, isFullWidth }) {
             className='fill-black dark:fill-white'
           />
         </svg>
-        <Link href='/' aria-label={BLOG.title} className='flex items-center'>
+        <Link href={`${prefix}/`} aria-label={BLOG.title} className='flex items-center'>
           <Image src={favicon} width={15} height={15} alt='terminal_icon' onError={() => setFavicon(true)} />
           <HeaderName ref={titleRef} siteTitle={BLOG.title} postTitle={navBarTitle} onClick={handleClickHeader} />
         </Link>
-        <NavBar />
+        <NavBar prefix={prefix} />
       </div>
     </>
   );
