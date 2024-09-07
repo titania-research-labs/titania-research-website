@@ -1,10 +1,14 @@
+import useIsJapanese from '@/lib/useIsJapanese';
 import Link from 'next/link';
 
 export default function NavBar() {
+  const isJapanese = useIsJapanese();
+  const prefix = isJapanese ? '/ja' : '';
+
   const links = [
-    { id: 0, name: 'Blog', to: '/blog' },
-    { id: 1, name: 'Events', to: '/events' },
-    { id: 2, name: 'About', to: '/about' },
+    { id: 0, name: 'Blog', to: `${prefix}/blog` },
+    { id: 1, name: 'Events', to: `${prefix}/events` },
+    { id: 2, name: 'About', to: `${prefix}/about` },
     {
       id: 3,
       name: 'Contact',
