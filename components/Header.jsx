@@ -27,7 +27,7 @@ export default function Header({ navBarTitle, isFullWidth }) {
   const resolveFavicon = fallback => !fallback && '/favicon.png';
   const [favicon, _setFavicon] = useState(resolveFavicon());
   const setFavicon = fallback => _setFavicon(resolveFavicon(fallback));
-  const [isJapanese] = useIsJapanese();
+  const { isJapanese } = useIsJapanese();
   const prefix = isJapanese ? '/ja' : '';
 
   const useSticky = !BLOG.autoCollapsedNavBar;

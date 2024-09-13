@@ -1,8 +1,11 @@
 import FormattedDate from '@/components/FormattedDate';
 import Link from 'next/link';
+import useIsJapanese from '@/lib/useIsJapanese';
+import { useEffect } from 'react';
 
-const BlogPostLink = ({ post, isJa = false }) => {
-  const prefix = isJa ? '/ja' : '';
+const BlogPostLink = ({ post }) => {
+  const { isJapanese } = useIsJapanese();
+  const prefix = isJapanese ? '/ja' : '';
 
   return (
     <Link href={`${prefix}/${post.slug}`}>
