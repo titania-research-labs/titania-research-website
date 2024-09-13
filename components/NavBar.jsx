@@ -3,7 +3,7 @@ import LangSwitcher from './LangSwitcher';
 import Link from 'next/link';
 
 export default function NavBar() {
-  const isJapanese = useIsJapanese();
+  const { isJapanese } = useIsJapanese();
   const prefix = isJapanese ? '/ja' : '';
 
   const links = [
