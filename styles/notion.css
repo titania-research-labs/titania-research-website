@@ -59,8 +59,23 @@
 .notion-quote,
 .notion-h-title {
   @apply p-0;
-  @apply my-3;
-  line-height: var(--no-leading);
+  @apply my-2;
+  @apply leading-relaxed;
+}
+.notion-h1 {
+  @apply mt-3;
+  @apply text-2xl;
+}
+.notion-h2 {
+  @apply mt-2;
+  @apply text-xl;
+}
+.notion-h3 {
+  @apply mt-1;
+  @apply text-lg;
+}
+.notion-h {
+  @apply mb-px;
 }
 .notion-page-link {
   color: inherit;
@@ -179,8 +194,8 @@ pre[class*='language-'] {
 }
 
 .notion-list > li {
-  padding-left: 2px;
-  padding-right: 2px;
+  @apply pl-1;
+  @apply py-0;
 }
 
 /* Every block */

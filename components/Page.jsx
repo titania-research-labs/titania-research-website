@@ -21,7 +21,7 @@ export default function Page({ page, blockMap, isFullWidth }) {
 
   return (
     <article className={cn('flex flex-col', isFullWidth ? 'md:px-24' : 'items-center')}>
-      <h1 className={cn('w-full font-bold text-3xl text-gray-900 dark:text-white', { 'max-w-4xl px-4': !isFullWidth })}>
+      <h1 className={cn('w-full font-bold text-3xl text-gray-700 dark:text-white', { 'max-w-4xl px-4': !isFullWidth })}>
         {page.title}
       </h1>
       {!['Top', 'Single'].includes(page.type) && (
@@ -40,7 +40,7 @@ export default function Page({ page, blockMap, isFullWidth }) {
           )}
         </nav>
       )}
-      <div className='self-stretch -mt-4 flex flex-col items-center lg:flex-row lg:items-stretch'>
+      <div className='self-stretch flex flex-col items-center lg:flex-row lg:items-stretch'>
         {!isFullWidth && <div className='flex-1 hidden lg:block' />}
         <div className={isFullWidth ? 'flex-1 pr-4' : 'flex-none w-full max-w-4xl px-4'}>
           <NotionRenderer recordMap={blockMap} fullPage={false} darkMode={dark} />
