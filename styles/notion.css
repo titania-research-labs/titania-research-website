@@ -51,7 +51,7 @@
 }
 
 .notion {
-  @apply text-gray-600 dark:text-gray-300;
+  @apply text-[#333333] dark:text-gray-300;
   overflow-wrap: break-word;
 }
 .notion,
