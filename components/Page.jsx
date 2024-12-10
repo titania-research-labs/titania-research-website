@@ -21,7 +21,7 @@ export default function Page({ page, blockMap, isFullWidth }) {
 
   return (
     <article className={cn('flex flex-col', isFullWidth ? 'md:px-24' : 'items-center')}>
-      <h1 className={cn('w-full font-bold text-3xl text-gray-700 dark:text-white', { 'max-w-4xl px-4': !isFullWidth })}>
+      <h1 className={cn('w-full font-bold text-3xl text-[#333333] dark:text-white', { 'max-w-4xl px-4': !isFullWidth })}>
         {page.title}
       </h1>
       {!['Top', 'Single'].includes(page.type) && (
