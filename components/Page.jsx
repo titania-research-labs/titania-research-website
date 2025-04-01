@@ -5,6 +5,7 @@ import FormattedDate from '@/components/FormattedDate';
 import CategoryItem from '@/components/CategoryItem';
 import NotionRenderer from '@/components/NotionRenderer';
 import TableOfContents from '@/components/TableOfContents';
+import useIsJapanese from '@/lib/useIsJapanese';
 
 /**
  * A page renderer
@@ -18,6 +19,7 @@ import TableOfContents from '@/components/TableOfContents';
  */
 export default function Page({ page, blockMap, isFullWidth }) {
   const { dark } = useTheme();
+  const { isJapanese } = useIsJapanese();
 
   return (
     <article className={cn('flex flex-col', isFullWidth ? 'md:px-24' : 'items-center')}>
@@ -43,7 +45,7 @@ export default function Page({ page, blockMap, isFullWidth }) {
       <div className='self-stretch flex flex-col items-center lg:flex-row lg:items-stretch'>
         {!isFullWidth && <div className='flex-1 hidden lg:block' />}
         <div className={isFullWidth ? 'flex-1 pr-4' : 'flex-none w-full max-w-4xl px-4'}>
-          <NotionRenderer recordMap={blockMap} fullPage={false} darkMode={dark} />
+          <NotionRenderer recordMap={blockMap} fullPage={false} darkMode={dark} className={isJapanese && 'text-[15px] leading-6'} />
         </div>
         <div
           className={cn(
