@@ -9,7 +9,7 @@ This repository is forked from [Nobelium](https://github.com/craigary/nobelium).
 You should add `NEXT_PUBLIC_BLOG_URL` to your `.env.local` file. For example:
 
 ```bash
-NEXT_PUBLIC_BLOG_URL=abc...
+NEXT_PUBLIC_BLOG_URL=abcd...
 ```
 
 ## Commands
