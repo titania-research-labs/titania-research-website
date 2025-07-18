@@ -1,4 +1,4 @@
-import { Text } from 'react-notion-xxx';
+import { Text } from 'react-notion-x';
 import cn from 'classnames';
 
 export default function Toggle({ block, children }) {
